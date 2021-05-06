@@ -21,8 +21,6 @@ const Film = () => {
       .then((dat_json) => setCredits(dat_json));
   }, []);
 
-  console.log(credit.cast);
-
   return (
     <article className="aFilm">
       <h2>"{film.tagline}"</h2>
@@ -35,7 +33,14 @@ const Film = () => {
       <h1>
         {film.original_title} ({justYear(film.release_date)})
       </h1>
-      <div className="theCast">{credit.id}</div>
+      <div className="theCast">
+        {credit.cast &&
+          credit.cast.map((ppl) => (
+            <p>
+              {ppl.name} as {ppl.character}
+            </p>
+          ))}
+      </div>
     </article>
   );
 };
