@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: lavender;
 }
 
 code {
@@ -12,9 +13,6 @@ code {
     monospace;
 }
 
-body {
-  background-color: lavender;
-}
 .Movies {
   display: grid;
   grid-template-columns: 30% 35% 30%;
