@@ -27,7 +27,9 @@ const Film = () => {
     <article className="aFilm">
       {/* In case there's no tagline */}
       <div className="aPoster">
-        <h2>{film.tagline ? `"${film.tagline}"` : ""}</h2>
+        <div className="tagline">
+          <h2>{film.tagline ? `"${film.tagline}"` : ""}</h2>
+        </div>
         {/* was getting a "GET https://image.tmdb.org/t/p/originalundefined 404" error with the && */}
         {film.id && (
           <img
@@ -55,7 +57,7 @@ const Film = () => {
               })}
           </div>
         </div>
-        <div id="someParagraphs">
+        <div className="someParagraphs">
           <p>
             A profound and brilliant film, and the last one made by Andrei
             Tarkovsky. The story is about life, death and (unsurprisingly)

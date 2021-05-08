@@ -5,7 +5,7 @@ function App() {
   return (
     <main className="theSite">
       <header>
-        <h1>It's movie time!</h1>
+        <h1 style={{ opacity: "0" }}>It's movie time!</h1>
       </header>
       <Film />
     </main>

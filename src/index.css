@@ -5,8 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: lavender;
+  background-color: #d8e3e7;
+  color: #126e82;
+  font-family: "Poppins", sans-serif;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,800;1,500;1,800&display=swap");
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -16,28 +20,39 @@ code {
 .aFilm {
   display: grid;
   grid-template-columns: 30.5% 2% 35% 2% 30.5%;
-}
-
-/* the tagline */
-.aPoster h2 {
-  height: 100px;
-  margin: 0;
-  font-style: italic;
-  width: fit-content;
+  height: 700px;
 }
 
 .aPoster {
   grid-column: 1;
   text-align: center;
+  color: #132c33;
+}
+
+/* the tagline */
+.tagline {
+  height: 100px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tagline h2 {
+  font-size: 20px;
+  font-style: italic;
 }
 
 .aPoster img {
   width: 90%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
 /* "released on..." */
 .aPoster h3 {
   font-style: italic;
+  margin: 0;
+  padding-top: 10px;
 }
 
 .aReview {
@@ -50,9 +65,10 @@ code {
 
 /* the title of the film */
 .aReview h2 {
-  color: teal;
   grid-column: 3;
+  font-size: 35px;
   margin: 0;
+  color: #132c33;
 }
 
 /* the director */
@@ -60,15 +76,24 @@ code {
   margin: 0;
 }
 
+/* the review itself */
+.someParagraphs p {
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
 .theCast {
-  color: teal;
   grid-column: 5;
   padding-top: 100px;
+  color: #132c33;
+  text-align: justify;
+  text-justify: distribute;
+  display: inline-block;
 }
 
 .theCast p {
   margin-top: 0;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 /* .review p {
