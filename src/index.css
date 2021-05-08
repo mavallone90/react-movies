@@ -13,26 +13,69 @@ code {
     monospace;
 }
 
-.Movies {
+.aFilm {
   display: grid;
-  grid-template-columns: 30% 35% 30%;
+  grid-template-columns: 30.5% 2% 35% 2% 30.5%;
 }
 
-.TitleInfo {
-  color: teal;
-  grid-column: 2;
+/* the tagline */
+.aPoster h2 {
+  height: 100px;
+  margin: 0;
+  font-style: italic;
   width: fit-content;
 }
 
-.review {
-  margin: 0px;
+.aPoster {
+  grid-column: 1;
+  text-align: center;
 }
 
-.review p {
+.aPoster img {
+  width: 90%;
+}
+
+/* "released on..." */
+.aPoster h3 {
+  font-style: italic;
+}
+
+.aReview {
+  grid-column: 3;
+}
+
+.reviewHead {
+  height: 100px;
+}
+
+/* the title of the film */
+.aReview h2 {
+  color: teal;
+  grid-column: 3;
+  margin: 0;
+}
+
+/* the director */
+.aReview p {
+  margin: 0;
+}
+
+.theCast {
+  color: teal;
+  grid-column: 5;
+  padding-top: 100px;
+}
+
+.theCast p {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+/* .review p {
   margin-top: 0px;
-}
+} */
 
-.details {
+/* .details {
   float: initial;
   height: 80px;
   position: relative;
@@ -46,7 +89,7 @@ code {
 
 .theDirector {
   font-size: large;
-  grid-column: 2;
+  grid-column: 3;
   height: 45px;
 }
 
@@ -56,40 +99,4 @@ code {
 
 .dir {
   margin: 0px;
-}
-
-.Tagline {
-  font-style: italic;
-  grid-column: 1;
-  width: fit-content;
-  text-align: center;
-}
-
-.thePoster {
-  grid-column: 1;
-  width: fit-content;
-  width: 350px;
-}
-
-.thePoster img {
-  width: 80%;
-  padding-top: 125px;
-}
-
-.Cast {
-  color: teal;
-  grid-column: 3;
-  width: 30%;
-  width: fit-content;
-  padding-top: 125px;
-  padding-left: 25px;
-}
-
-.castMember {
-  margin: 0px;
-}
-
-.castMember p {
-  margin-top: 0px;
-  margin-bottom: 15px;
-}
+} */

@@ -3,7 +3,7 @@ import Film from "./Film";
 
 function App() {
   return (
-    <main className="aFilm">
+    <main className="theSite">
       <header>
         <h1>It's movie time!</h1>
       </header>
