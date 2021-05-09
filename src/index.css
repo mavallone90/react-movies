@@ -20,7 +20,7 @@ code {
 .aFilm {
   display: grid;
   grid-template-columns: 30.5% 2% 35% 2% 30.5%;
-  height: 1000px;
+  min-height: 700px;
 }
 
 .aPoster {
@@ -55,6 +55,11 @@ code {
   opacity: 38%;
 }
 
+.released p {
+  color: #265a0e;
+  font-style: normal;
+}
+
 .aReview {
   grid-column: 3;
 }
@@ -69,6 +74,15 @@ code {
   margin: 0;
   color: #132c33;
   font-size: 24px;
+}
+
+/* the english title if needed */
+.engTitle {
+  margin: 0;
+  color: #126e82;
+  opacity: 68%;
+  font-size: 16px;
+  font-style: italic;
 }
 
 /* the director */
@@ -95,4 +109,8 @@ code {
 #theCast p {
   margin-top: 0;
   margin-bottom: 10px;
+}
+
+#theCast p:first-child {
+  color: #b96a9f;
 }

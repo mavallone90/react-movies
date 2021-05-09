@@ -5,6 +5,7 @@ import {
   detailsRequest,
   creditsRequest,
   IMAGE_URL,
+  numberWithCommas,
   // oneReview,
 } from "./consts";
 
@@ -50,14 +51,27 @@ const Film = () => {
           />
         )}
         <h3 className="released">
-          Released in theaters in {formateDate(film.release_date)}
+          Released {formateDate(film.release_date)} <br></br>
+          {film.runtime} mins <br></br>
+          {film.revenue > 0 ? (
+            <p>Grossed ${numberWithCommas(film.revenue)}</p>
+          ) : (
+            ""
+          )}
         </h3>
       </div>
 
       <div className="aReview">
         <div className="reviewHead" ref={centerHeight}>
           <h2>
-            {film.original_title} ({justYear(film.release_date)})
+            {film.title === film.original_title ? (
+              `${film.original_title} (${justYear(film.release_date)})`
+            ) : (
+              <>
+                {film.original_title} ({justYear(film.release_date)}){" "}
+                <p className="engTitle">aka {film.title}</p>
+              </>
+            )}
           </h2>
           <div className="theDirector">
             {credit.crew &&
