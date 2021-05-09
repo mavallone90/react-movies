@@ -9,9 +9,9 @@ import {
 } from "./consts";
 
 const Film = () => {
-  //   const currentID = movieid_test[6];
   const [film, setFilm] = React.useState([]);
   const [credit, setCredits] = React.useState([]);
+  const centerHeight = React.useRef(null);
 
   React.useEffect(() => {
     fetch(detailsRequest)
@@ -23,12 +23,23 @@ const Film = () => {
       .then((dat_json) => setCredits(dat_json));
   }, []);
 
+  React.useEffect(() => {
+    let desiredHeight = centerHeight.current.offsetHeight;
+    if (desiredHeight > 100) {
+      console.log(desiredHeight);
+      document.getElementById("tagline").style.height = desiredHeight + "px";
+      document.getElementById("theCast").style.paddingTop =
+        desiredHeight + "px";
+    }
+  });
+  // PROBLEM! Need to know how to get the last value and stop
+
   return (
     <article className="aFilm">
       {/* In case there's no tagline */}
       <div className="aPoster">
-        <div className="tagline">
-          <h2>{film.tagline ? `"${film.tagline}"` : ""}</h2>
+        <div id="tagline">
+          <h3 id="taglineT">{film.tagline ? `"${film.tagline}"` : ""}</h3>
         </div>
         {/* was getting a "GET https://image.tmdb.org/t/p/originalundefined 404" error with the && */}
         {film.id && (
@@ -38,11 +49,13 @@ const Film = () => {
             alt={`Poster for ${film.name}`}
           />
         )}
-        <h3>Released in theaters in {formateDate(film.release_date)}</h3>
+        <h3 className="released">
+          Released in theaters in {formateDate(film.release_date)}
+        </h3>
       </div>
 
       <div className="aReview">
-        <div className="reviewHead">
+        <div className="reviewHead" ref={centerHeight}>
           <h2>
             {film.original_title} ({justYear(film.release_date)})
           </h2>
@@ -91,7 +104,7 @@ const Film = () => {
         </div>
       </div>
 
-      <div className="theCast">
+      <div id="theCast">
         {credit.cast &&
           credit.cast.map((ppl) => {
             if (ppl.order < 10) {

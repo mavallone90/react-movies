@@ -20,39 +20,39 @@ code {
 .aFilm {
   display: grid;
   grid-template-columns: 30.5% 2% 35% 2% 30.5%;
-  height: 700px;
+  height: 1000px;
 }
 
 .aPoster {
   grid-column: 1;
   text-align: center;
   color: #132c33;
+  font-size: 90%;
 }
 
 /* the tagline */
-.tagline {
+#tagline {
   height: 100px;
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.tagline h2 {
-  font-size: 20px;
   font-style: italic;
+  opacity: 38%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
+/* the poster itself */
 .aPoster img {
   width: 90%;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
 /* "released on..." */
-.aPoster h3 {
+.released {
   font-style: italic;
   margin: 0;
-  padding-top: 10px;
+  height: 100px;
+  opacity: 38%;
 }
 
 .aReview {
@@ -60,68 +60,39 @@ code {
 }
 
 .reviewHead {
-  height: 100px;
+  min-height: 100px;
 }
 
 /* the title of the film */
 .aReview h2 {
   grid-column: 3;
-  font-size: 35px;
   margin: 0;
   color: #132c33;
+  font-size: 24px;
 }
 
 /* the director */
-.aReview p {
+.theDirector p {
   margin: 0;
+  font-size: 20px;
+  color: #b96a9f;
 }
 
 /* the review itself */
 .someParagraphs p {
+  margin-top: 0;
   margin-bottom: 10px;
   text-align: justify;
 }
 
-.theCast {
+#theCast {
   grid-column: 5;
   padding-top: 100px;
   color: #132c33;
-  text-align: justify;
-  text-justify: distribute;
-  display: inline-block;
+  padding-right: 5px;
 }
 
-.theCast p {
+#theCast p {
   margin-top: 0;
   margin-bottom: 10px;
 }
-
-/* .review p {
-  margin-top: 0px;
-} */
-
-/* .details {
-  float: initial;
-  height: 80px;
-  position: relative;
-}
-
-.details h1 {
-  margin: 0px;
-  bottom: 10px;
-  position: absolute;
-}
-
-.theDirector {
-  font-size: large;
-  grid-column: 3;
-  height: 45px;
-}
-
-.theDirector p {
-  margin: 0px;
-}
-
-.dir {
-  margin: 0px;
-} */
