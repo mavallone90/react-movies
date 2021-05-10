@@ -1,5 +1,6 @@
 import React from "react";
 import Film from "./Film";
+import Films from "./Films";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
           It's movie time!
         </h1>
       </header>
+      <Films />
       <Film />
     </main>
   );

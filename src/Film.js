@@ -27,7 +27,7 @@ const Film = () => {
   React.useEffect(() => {
     let desiredHeight = centerHeight.current.offsetHeight;
     if (desiredHeight > 100) {
-      console.log(desiredHeight);
+      // console.log(desiredHeight);
       document.getElementById("tagline").style.height = desiredHeight + "px";
       document.getElementById("theCast").style.paddingTop =
         desiredHeight + "px";
@@ -50,7 +50,7 @@ const Film = () => {
             alt={`Poster for ${film.name}`}
           />
         )}
-        <h3 className="released">
+        <p className="released">
           Released {formateDate(film.release_date)} <br></br>
           {film.runtime} mins <br></br>
           {film.revenue > 0 ? (
@@ -58,7 +58,7 @@ const Film = () => {
           ) : (
             ""
           )}
-        </h3>
+        </p>
       </div>
 
       <div className="aReview">

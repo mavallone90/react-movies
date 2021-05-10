@@ -28,6 +28,7 @@ code {
   text-align: center;
   color: #132c33;
   font-size: 90%;
+  opacity: 100%;
 }
 
 /* the tagline */
@@ -49,15 +50,16 @@ code {
 
 /* "released on..." */
 .released {
-  font-style: italic;
   margin: 0;
   height: 100px;
-  opacity: 38%;
+  text-shadow: 2px 2px #c2c2c2;
+  color: #132c33;
+  opacity: 85%;
 }
 
+/* this is the revenue  */
 .released p {
   color: #265a0e;
-  font-style: normal;
 }
 
 .aReview {
