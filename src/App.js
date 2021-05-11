@@ -11,9 +11,10 @@ function App() {
         </h1>
       </header>
       <Films />
-      <Film />
+      {/* <Film /> */}
     </main>
   );
 }
+// I Have the single <Film /> page commented out for now, while I"m testing
 
 export default App;

@@ -1,8 +1,8 @@
 import React from "react";
-import { tmdb_apikey, my_films } from "./consts";
+import { tmdb_apikey, my_films, justYear } from "./consts";
 
 const Films = () => {
-  //   const [film, setFilm] = React.useState([]);
+  const [film, setFilm] = React.useState([]);
   let reqs = [];
 
   my_films.forEach((id) => {
@@ -12,13 +12,23 @@ const Films = () => {
 
   console.log(reqs);
 
-  //   React.useEffect(() => {
-  //     fetch()
-  //       .then((da_response) => da_response.json())
-  //       .then((dat_json) => setFilm(dat_json));
-  //   }, []);
+  React.useEffect(() => {
+    fetch(reqs[9])
+      .then((da_response) => da_response.json())
+      .then((dat_json) => setFilm(dat_json));
+  }, []);
+  // PROBLEM! - Right now only runs the 10th URL API request.
+  // I wanted to run every url in the [reqs] array of URLs.  Then store them all in state, if possible.
+  // Without the dependency array at the end, it will run through all them, but also crash my browser usually
 
-  return <div>Gettting there...</div>;
+  return (
+    <div>
+      Getting there...
+      {/* <h2>
+        "{film.title}" ({justYear(film.release_date)})
+      </h2> */}
+    </div>
+  );
 };
 
 export default Films;

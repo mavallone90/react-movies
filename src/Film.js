@@ -34,6 +34,9 @@ const Film = () => {
     }
   });
   // PROBLEM! Need to know how to get the last value and stop
+  // Right now it will fix the height disparity after a refresh
+  // I suspect this is inefficient.  I could probably fix the refresh issue,
+  // but stopping useEffect from running indefinitely might be more import
 
   return (
     <article className="aFilm">
@@ -115,6 +118,8 @@ const Film = () => {
             that much more absorbed in the world.{" "}
           </p>
           <p>One of the best films I've ever seen.</p>
+          {/* PROBLEM! - WOuld like this review text to to be in a variable I can keep in const.js and intsert.  
+          But when I do that it displaysa all the <p> tags and such.  And does not format. */}
         </div>
       </div>
 
