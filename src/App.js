@@ -1,6 +1,7 @@
 import React from "react";
 import Film from "./Film";
 import Films from "./Films";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
@@ -10,8 +11,17 @@ function App() {
           It's movie time!
         </h1>
       </header>
-      <Films />
-      <Film />
+
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Films />
+          </Route>
+          <Route>
+            <Film path="/film/:currentID" />
+          </Route>
+        </Switch>
+      </Router>
     </main>
   );
 }

@@ -1,9 +1,9 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import {
   formateDate,
   justYear,
-  detailsRequest,
-  creditsRequest,
+  tmdb_apikey,
   IMAGE_URL,
   numberWithCommas,
   // oneReview,
@@ -13,6 +13,10 @@ const Film = () => {
   const [film, setFilm] = React.useState([]);
   const [credit, setCredits] = React.useState([]);
   const centerHeight = React.useRef(null);
+  const { currentID } = useParams();
+
+  const detailsRequest = `https://api.themoviedb.org/3/movie/${currentID}?api_key=${tmdb_apikey}&language=en-US`;
+  const creditsRequest = `https://api.themoviedb.org/3/movie/${currentID}/credits?api_key=${tmdb_apikey}&language=en-US`;
 
   React.useEffect(() => {
     fetch(detailsRequest)
