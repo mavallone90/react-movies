@@ -17,6 +17,47 @@ code {
     monospace;
 }
 
+nav {
+  display: grid;
+  grid-template-columns: 2% 90% 2%;
+  height: 75px;
+  padding-bottom: 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin-top: 0px;
+  grid-column: 2;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+nav ul li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.navItem {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.navItem:link,
+.navItem:visited,
+.navItem:active {
+  font-style: normal;
+  text-decoration: none;
+  color: #0a404d;
+}
+
+.navItem:hover {
+  color: red;
+}
+
 .aFilm {
   display: grid;
   grid-template-columns: 30.5% 2% 35% 2% 30.5%;
@@ -33,7 +74,7 @@ code {
 
 /* the tagline */
 #tagline {
-  height: 100px;
+  min-height: 100px;
   margin: 0;
   font-style: italic;
   opacity: 38%;

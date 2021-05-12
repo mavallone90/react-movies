@@ -12,14 +12,19 @@ const Films = () => {
 
   console.log(reqs);
 
+  let reqsFilled = [];
+
   React.useEffect(() => {
-    fetch(reqs[9])
+    fetch(reqs)
       .then((da_response) => da_response.json())
       .then((dat_json) => setFilm(dat_json));
   }, []);
+
   // PROBLEM! - Right now only runs the 10th URL API request.
   // I wanted to run every url in the [reqs] array of URLs.  Then store them all in state, if possible.
   // Without the dependency array at the end, it will run through all them, but also crash my browser usually
+
+  console.log("Filled....", reqsFilled);
 
   return (
     <div>
