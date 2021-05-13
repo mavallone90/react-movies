@@ -3,7 +3,7 @@ const Nav = () => {
     <nav>
       <ul>
         {/* <li>
-          <img src="img/popcorn.png" alt="logo" />
+          <img src="popcorn.svg" alt="logo" />
         </li> */}
         <li>
           <a className="navItem" href="/">

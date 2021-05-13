@@ -2,6 +2,7 @@ import React from "react";
 import Film from "./Film";
 import Films from "./Films";
 import Nav from "./Nav";
+import Upcoming from "./Upcoming";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
       </header>
       <Nav />
       {/* <Films /> */}
-      <Film />
+      {/* <Film /> */}
+      <Upcoming />
     </main>
   );
 }

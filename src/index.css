@@ -157,3 +157,14 @@ nav ul li {
 #theCast p:first-child {
   color: #b96a9f;
 }
+
+.comingAttractions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+.comingAttractions article {
+  text-align: center;
+}
