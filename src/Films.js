@@ -1,5 +1,5 @@
 import React from "react";
-import { tmdb_apikey, my_films, justYear } from "./consts";
+import { tmdb_apikey, my_films, justYear, small_IMAGE_URL } from "./consts";
 
 const Films = () => {
   const [film, setFilm] = React.useState([]);
@@ -28,10 +28,14 @@ const Films = () => {
 
   return (
     <div>
-      Getting there...
+      Here is a film while I try get the home page to work...
       <h2>
         "{film.title}" ({justYear(film.release_date)})
       </h2>
+      <img
+        src={`${small_IMAGE_URL}${film.poster_path}`}
+        alt={`Poster for ${film.title}`}
+      />
     </div>
   );
 };

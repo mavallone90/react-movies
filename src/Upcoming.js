@@ -1,5 +1,6 @@
 import React from "react";
-import { tmdb_apikey, IMAGE_URL } from "./consts";
+import { tmdb_apikey, small_IMAGE_URL } from "./consts";
+import { Link } from "react-router-dom";
 
 const Upcoming = () => {
   const [future, setfuture] = React.useState([]);
@@ -17,17 +18,20 @@ const Upcoming = () => {
     <div className="comingAttractions">
       {future.results &&
         future.results.map((film) => {
-          if (future.dates.minimum < film.release_date)
+          if (future.dates.minimum < film.release_date) {
             // beacuse most of the "upcoming" movies already came out
             return (
-              <article key={film.id}>
-                <h3>{film.title}</h3>
-                <img
-                  src={`${IMAGE_URL}${film.poster_path}`}
-                  alt={`Poster for ${film.title}`}
-                />
-              </article>
+              <Link to={`OneFilm/${film.id}`}>
+                <article key={film.id}>
+                  <h3>{film.title}</h3>
+                  <img
+                    src={`${small_IMAGE_URL}${film.poster_path}`}
+                    alt={`Poster for ${film.title}`}
+                  />
+                </article>
+              </Link>
             );
+          } else return "";
         })}
     </div>
   );

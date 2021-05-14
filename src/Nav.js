@@ -1,3 +1,6 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 const Nav = () => {
   return (
     <nav>
@@ -6,24 +9,25 @@ const Nav = () => {
           <img src="popcorn.svg" alt="logo" />
         </li> */}
         <li>
-          <a className="navItem" href="/">
+          <Link to="/" className="navItem">
             Home
-          </a>
+          </Link>
         </li>
         <li>
-          <a className="navItem" href="/">
+          <Link to="/Great" className="navItem">
             Great Films
-          </a>
+          </Link>
         </li>
         <li>
-          <a className="navItem" href="/">
+          <Link to="/Current" className="navItem">
             Current Movies
-          </a>
+          </Link>
         </li>
         <li>
-          <a className="navItem" href="/">
+          <Link to="/Upcoming" className="navItem">
+            {" "}
             Upcoming Flicks
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

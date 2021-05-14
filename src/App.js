@@ -1,9 +1,11 @@
 import React from "react";
 import Film from "./Film";
-import Films from "./Films";
+// import Films from "./Films";
 import Nav from "./Nav";
 import Upcoming from "./Upcoming";
 import Current from "./Current";
+import OneFilm from "./OneFilm";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -11,8 +13,8 @@ function App() {
       <header>
         <h1
           style={{
-            visibility: "hidden",
-            height: "0px",
+            visibility: "visable",
+            height: "40px",
             marginLeft: "2%",
             marginTop: "20px",
             marginBottom: "20px",
@@ -21,11 +23,16 @@ function App() {
           It's movie time!
         </h1>
       </header>
-      <Nav />
-      {/* <Films /> */}
-      {/* <Film /> */}
-      <Upcoming />
-      {/* <Current /> */}
+      <Router>
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Film} />
+          <Route exact path="/Great" component={Film} />
+          <Route exact path="/Upcoming" component={Upcoming} />
+          <Route exact path="/Current" component={Current} />
+          <Route path="/OneFilm/:currentID" component={OneFilm} />
+        </Switch>
+      </Router>
     </main>
   );
 }

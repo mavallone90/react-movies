@@ -170,5 +170,5 @@ nav ul li {
 }
 
 .comingAttractions img {
-  height: 300px;
+  max-width: 200px;
 }
