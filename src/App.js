@@ -3,6 +3,7 @@ import Film from "./Film";
 import Films from "./Films";
 import Nav from "./Nav";
 import Upcoming from "./Upcoming";
+import Current from "./Current";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       {/* <Films /> */}
       {/* <Film /> */}
       <Upcoming />
+      {/* <Current /> */}
     </main>
   );
 }

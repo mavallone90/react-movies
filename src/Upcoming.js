@@ -11,7 +11,7 @@ const Upcoming = () => {
     fetch(upcomingReq)
       .then((da_response) => da_response.json())
       .then((dat_json) => setfuture(dat_json));
-  }, []);
+  }, [upcomingReq]);
 
   return (
     <div className="comingAttractions">
@@ -20,12 +20,11 @@ const Upcoming = () => {
           if (future.dates.minimum < film.release_date)
             // beacuse most of the "upcoming" movies already came out
             return (
-              <article>
+              <article key={film.id}>
                 <h3>{film.title}</h3>
                 <img
                   src={`${IMAGE_URL}${film.poster_path}`}
                   alt={`Poster for ${film.title}`}
-                  style={{ height: "300px" }}
                 />
               </article>
             );

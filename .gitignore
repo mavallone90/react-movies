@@ -25,3 +25,4 @@ yarn-error.log*
 consts.js
 .vscode
 /public
+popcorn.svg

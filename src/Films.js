@@ -10,12 +10,12 @@ const Films = () => {
     reqs.push(fp_detailsRequest);
   });
 
-  console.log(reqs);
+  // console.log(reqs);
 
   let reqsFilled = [];
 
   React.useEffect(() => {
-    fetch(reqs)
+    fetch(reqs[9])
       .then((da_response) => da_response.json())
       .then((dat_json) => setFilm(dat_json));
   }, []);
@@ -29,9 +29,9 @@ const Films = () => {
   return (
     <div>
       Getting there...
-      {/* <h2>
+      <h2>
         "{film.title}" ({justYear(film.release_date)})
-      </h2> */}
+      </h2>
     </div>
   );
 };

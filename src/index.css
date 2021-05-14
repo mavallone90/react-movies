@@ -19,7 +19,7 @@ code {
 
 nav {
   display: grid;
-  grid-template-columns: 2% 90% 2%;
+  grid-template-columns: 2% 96% 2%;
   height: 75px;
   padding-bottom: 10px;
 }
@@ -167,4 +167,8 @@ nav ul li {
 
 .comingAttractions article {
   text-align: center;
+}
+
+.comingAttractions img {
+  height: 300px;
 }
