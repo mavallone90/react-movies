@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 const Upcoming = () => {
   const [future, setfuture] = React.useState([]);
   var page = 1;
+  var d = Date.now();
+  var basicallyNow = d - 420000000;
+  console.log(basicallyNow);
 
   const upcomingReq = `https://api.themoviedb.org/3/movie/upcoming?api_key=${tmdb_apikey}&language=en-US&page=${page}`;
 
@@ -18,7 +21,7 @@ const Upcoming = () => {
     <div className="comingAttractions">
       {future.results &&
         future.results.map((film) => {
-          if (future.dates.minimum < film.release_date) {
+          if (1620616802927 < Date.parse(film.release_date)) {
             // beacuse most of the "upcoming" movies already came out
             return (
               <Link to={`OneFilm/${film.id}`}>
