@@ -13,11 +13,11 @@ function App() {
       <header>
         <h1
           style={{
-            visibility: "visable",
-            height: "40px",
+            visibility: "hidden",
+            height: "20px",
             marginLeft: "2%",
-            marginTop: "20px",
-            marginBottom: "20px",
+            marginTop: "0px",
+            marginBottom: "0px",
           }}
         >
           It's movie time!

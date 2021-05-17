@@ -21,7 +21,7 @@ const Upcoming = () => {
     <div className="comingAttractions">
       {future.results &&
         future.results.map((film) => {
-          if (1620616802927 < Date.parse(film.release_date)) {
+          if (basicallyNow < Date.parse(film.release_date)) {
             // beacuse most of the "upcoming" movies already came out
             return (
               <Link to={`OneFilm/${film.id}`}>

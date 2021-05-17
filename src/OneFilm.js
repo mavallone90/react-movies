@@ -56,7 +56,7 @@ const OneFilm = () => {
             alt={`Poster for ${film.name}`}
           />
         )}
-        <p className="released">
+        <div className="released">
           Released {formateDate(film.release_date)} <br></br>
           {film.runtime} mins <br></br>
           {film.revenue > 0 ? (
@@ -64,7 +64,7 @@ const OneFilm = () => {
           ) : (
             ""
           )}
-        </p>
+        </div>
       </div>
 
       <div className="aReview">
