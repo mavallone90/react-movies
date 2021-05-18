@@ -41,7 +41,9 @@ const Nav = () => {
           <input
             id="searchThing"
             type="text"
-            value={search ? search : ""}
+            minlength="1"
+            placeholder="Search"
+            value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           <input type="submit" id="submitThing" onClick={handleSubmit} />
