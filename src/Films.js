@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { tmdb_apikey, my_films, justYear, small_IMAGE_URL } from "./consts";
 
 const Films = () => {
-  // const [film, setFilm] = React.useState([]);
-  // const [film2, setFilm2] = React.useState([]);
-  let theGreats = [];
+  const [films, setFilms] = useState([]);
 
-  my_films.forEach((id) => {
-    const fp_detailsRequest = `https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb_apikey}&language=en-US`;
-    fetch(fp_detailsRequest)
-      .then((response) => response.json())
-      .then((json) => theGreats.push(json));
-  });
+  useEffect(async () => {
+    async function fetchFilmsData(filmIds) => {
+      const filmsData = await Promise.all(
+        filmIds.map(async (id) => {
+          const response = await fetch(
+            `https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb_apikey}&language=en-US`
+          );
+          const film = await response.json();
+
+          return film;
+        })
+      );
+
+      return filmsData;
+    };
+
+    const filmDatas = await fetchFilmsData(my_films);
+    setFilms(filmDatas);
+  }, []);
 
   // function test(data) {
   //   console.log(data);
@@ -19,8 +30,6 @@ const Films = () => {
   //     return { ...prevState, data };
   //   });
   // }
-
-  console.log(theGreats);
 
   // let reqsFilled = [];
 
@@ -40,10 +49,9 @@ const Films = () => {
     <div>
       Ok.
       {/* Here is a film while I try get the home page to work... */}
-      {theGreats &&
-        theGreats.filter((entry) => {
-          return <h3>Hello {entry.title}</h3>;
-        })}
+      {films.map((film) => {
+        return <h3 key={film.id}>Hello {film.title}</h3>;
+      })}
     </div>
   );
 };
