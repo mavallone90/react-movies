@@ -1,25 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { tmdb_apikey } from "./consts";
+// import { tmdb_apikey } from "./consts";
 
-const Nav = () => {
+const Nav = ({ run }) => {
   const [search, setSearch] = React.useState("");
-  var searchTitle = encodeURIComponent(search && search);
 
-  const movieRequest = `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=${searchTitle}&page=1`;
-
-  function handleSubmit(event) {
-    fetch(movieRequest)
-      .then((da_response) => da_response.json())
-      .then((dat_json) => setSearch(dat_json));
+  function handleSubmit() {
+    const movieTitle = encodeURIComponent(search && search);
+    run(movieTitle);
   }
-
-  // logs link to page of movie searched, if there is one
-  console.log(
-    search.total_results > 0
-      ? "http://localhost:3000/OneFilm/" + search.results[0].id
-      : "Nada"
-  );
 
   return (
     <nav>
@@ -41,7 +30,7 @@ const Nav = () => {
           <input
             id="searchThing"
             type="text"
-            minlength="1"
+            minLength="1"
             placeholder="Search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}

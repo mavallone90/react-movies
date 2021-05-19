@@ -1,13 +1,27 @@
 import React from "react";
 import Film from "./Film";
-// import Films from "./Films";
+import Films from "./Films";
 import Nav from "./Nav";
 import Upcoming from "./Upcoming";
 import Current from "./Current";
 import OneFilm from "./OneFilm";
+import { tmdb_apikey } from "./consts";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
+  function run(arg) {
+    const movieRequest = `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=${arg}&page=1`;
+    fetch(movieRequest)
+      .then((response) => response.json())
+      .then((json) =>
+        console.log(
+          json.total_results > 0
+            ? "http://localhost:3000/OneFilm/" + json.results[0].id
+            : "Nada"
+        )
+      );
+  }
+
   return (
     <main className="theSite">
       <header>
@@ -24,10 +38,12 @@ function App() {
         </h1>
       </header>
       <Router>
-        <Nav />
+        <Nav run={run} />
         <Switch>
-          <Route exact path="/" component={Film} />
-          <Route exact path="/Great" component={Film} />
+          <Route exact path="/">
+            <Film />
+          </Route>
+          <Route exact path="/Great" component={Films} />
           <Route exact path="/Upcoming" component={Upcoming} />
           <Route exact path="/Current" component={Current} />
           <Route path="/OneFilm/:currentID" component={OneFilm} />

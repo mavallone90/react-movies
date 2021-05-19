@@ -19,8 +19,8 @@ const Current = () => {
       {current.results &&
         current.results.map((film) => {
           return (
-            <Link to={`OneFilm/${film.id}`}>
-              <article key={film.id}>
+            <Link to={`OneFilm/${film.id}`} key={film.id}>
+              <article>
                 <h3>{film.title}</h3>
                 <img
                   src={`${small_IMAGE_URL}${film.poster_path}`}

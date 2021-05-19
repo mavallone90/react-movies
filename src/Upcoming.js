@@ -7,7 +7,6 @@ const Upcoming = () => {
   var page = 1;
   var d = Date.now();
   var basicallyNow = d - 420000000;
-  console.log(basicallyNow);
 
   const upcomingReq = `https://api.themoviedb.org/3/movie/upcoming?api_key=${tmdb_apikey}&language=en-US&page=${page}`;
 
@@ -24,8 +23,8 @@ const Upcoming = () => {
           if (basicallyNow < Date.parse(film.release_date)) {
             // beacuse most of the "upcoming" movies already came out
             return (
-              <Link to={`OneFilm/${film.id}`}>
-                <article key={film.id}>
+              <Link to={`OneFilm/${film.id}`} key={film.id}>
+                <article>
                   <h3>{film.title}</h3>
                   <img
                     src={`${small_IMAGE_URL}${film.poster_path}`}
