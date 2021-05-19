@@ -5,7 +5,7 @@ const Films = () => {
   const [films, setFilms] = useState([]);
 
   useEffect(async () => {
-    async function fetchFilmsData(filmIds) => {
+    const fetchFilmsData = async (filmIds) => {
       const filmsData = await Promise.all(
         filmIds.map(async (id) => {
           const response = await fetch(
