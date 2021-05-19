@@ -4,7 +4,7 @@ import { tmdb_apikey, my_films, justYear, small_IMAGE_URL } from "./consts";
 const Films = () => {
   const [films, setFilms] = useState([]);
 
-  useEffect(async () => {
+  useEffect(() => {
     const fetchFilmsData = async (filmIds) => {
       const filmsData = await Promise.all(
         filmIds.map(async (id) => {
@@ -17,11 +17,10 @@ const Films = () => {
         })
       );
 
-      return filmsData;
+      setFilms(filmsData);
     };
 
-    const filmDatas = await fetchFilmsData(my_films);
-    setFilms(filmDatas);
+    fetchFilmsData(my_films);
   }, []);
 
   // function test(data) {
