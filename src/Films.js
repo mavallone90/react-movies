@@ -6,16 +6,16 @@ const Films = () => {
 
   useEffect(() => {
     const fetchFilmsData = async (filmIds) => {
-      const filmsData = await Promise.all(
-        filmIds.map(async (id) => {
-          const response = await fetch(
-            `https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb_apikey}&language=en-US`
-          );
-          const film = await response.json();
+      const filmDataPromises = filmIds.map(async (id) => {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb_apikey}&language=en-US`
+        );
+        const film = await response.json();
 
-          return film;
-        })
-      );
+        return film;
+      });
+
+      const filmsData = await Promise.all(filmDataPromises);
 
       setFilms(filmsData);
     };
