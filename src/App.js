@@ -13,13 +13,13 @@ function App() {
     const movieRequest = `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=${arg}&page=1`;
     fetch(movieRequest)
       .then((response) => response.json())
-      .then((json) =>
-        console.log(
-          json.total_results > 0
-            ? "http://localhost:3000/OneFilm/" + json.results[0].id
-            : "Nada"
-        )
-      );
+      .then((json) => {
+        if (json.total_results > 0) {
+          window.location = "/OneFilm/" + json.results[0].id;
+        } else {
+          return console.log("Nada");
+        }
+      });
   }
 
   return (

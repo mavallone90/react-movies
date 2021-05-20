@@ -1,49 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { tmdb_apikey, my_films, justYear, small_IMAGE_URL } from "./consts";
+import { Link } from "react-router-dom";
 
 const Films = () => {
-  // const [film, setFilm] = React.useState([]);
-  // const [film2, setFilm2] = React.useState([]);
-  let theGreats = [];
+  const [films, setFilms] = useState([]);
 
-  my_films.forEach((id) => {
-    const fp_detailsRequest = `https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb_apikey}&language=en-US`;
-    fetch(fp_detailsRequest)
-      .then((response) => response.json())
-      .then((json) => theGreats.push(json));
-  });
+  useEffect(() => {
+    const fetchFilmsData = async (filmIds) => {
+      const filmDataPromises = filmIds.map(async (id) => {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb_apikey}&language=en-US`
+        );
+        const film = await response.json();
 
-  // function test(data) {
-  //   console.log(data);
-  //   setFilm2((prevState) => {
-  //     return { ...prevState, data };
-  //   });
-  // }
+        return film;
+      });
 
-  console.log(theGreats);
+      const filmsData = await Promise.all(filmDataPromises);
 
-  // let reqsFilled = [];
+      setFilms(filmsData);
+    };
 
-  // React.useEffect(() => {
-  //   fetch(reqs[9])
-  //     .then((da_response) => da_response.json())
-  //     .then((dat_json) => setFilm(dat_json));
-  // }, []);
-
-  // PROBLEM! - Right now only runs the 10th URL API request.
-  // I wanted to run every url in the [reqs] array of URLs.  Then store them all in state, if possible.
-  // Without the dependency array at the end, it will run through all them, but also crash my browser usually
-
-  // console.log("Filled....", reqsFilled);
+    fetchFilmsData(my_films);
+  }, []);
 
   return (
-    <div>
-      Ok.
-      {/* Here is a film while I try get the home page to work... */}
-      {theGreats &&
-        theGreats.filter((entry) => {
-          return <h3>Hello {entry.title}</h3>;
-        })}
+    <div className="comingAttractions">
+      {films.map((film) => {
+        return (
+          <Link to={`OneFilm/${film.id}`} key={film.id}>
+            <article>
+              <h3>
+                {film.title} ({justYear(film.release_date)})
+              </h3>
+              <img
+                src={`${small_IMAGE_URL}${film.poster_path}`}
+                alt={`Poster for ${film.title}`}
+              />
+            </article>
+          </Link>
+        );
+      })}
     </div>
   );
 };
