@@ -22,6 +22,11 @@ const Nav = ({ run }) => {
           </Link>
         </li>
         <li>
+          <Link to="/Reviews" className="navItem">
+            Reviews
+          </Link>
+        </li>
+        <li>
           <Link to="/Great" className="navItem">
             Great Films
           </Link>
