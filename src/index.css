@@ -58,6 +58,28 @@ nav ul li {
   color: rgb(185, 106, 159);
 }
 
+#searchThing {
+  opacity: 75%;
+  padding: 8px;
+  max-width: 175px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 1);
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 5px;
+  text-align: center;
+}
+#searchThing:focus {
+  outline: 0;
+  opacity: 100%;
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.1);
+}
+#searchThing:hover {
+  border: 1px solid rgba(0, 0, 0, 0.69);
+}
+
 .aFilm {
   display: grid;
   grid-template-columns: 30.5% 2% 35% 2% 30.5%;

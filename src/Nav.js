@@ -10,6 +10,12 @@ const Nav = ({ run }) => {
     run(movieTitle);
   }
 
+  function test(event) {
+    if (event.keyCode === 13) {
+      handleSubmit();
+    }
+  }
+
   return (
     <nav>
       <ul>
@@ -17,9 +23,9 @@ const Nav = ({ run }) => {
           <img src="pop.png" style={{ height: "50px" }} />
         </li> */}
         <li>
-          <Link to="/" className="navItem">
+          {/* <Link to="/" className="navItem">
             Home
-          </Link>
+          </Link> */}
         </li>
         <li>
           <Link to="/Reviews" className="navItem">
@@ -36,11 +42,12 @@ const Nav = ({ run }) => {
             id="searchThing"
             type="text"
             minLength="1"
-            placeholder="Search"
+            placeholder=" Search / Press Enter"
             value={search}
+            onKeyDown={test}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <input type="submit" id="submitThing" onClick={handleSubmit} />
+          {/* <input type="submit" id="submitThing" onClick={handleSubmit} /> */}
         </li>
         <li>
           <Link to="/Current" className="navItem">

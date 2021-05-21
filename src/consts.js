@@ -74,13 +74,21 @@ export function numberWithCommas(x) {
   if (x > 0) return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-// console.log("Credits JSON:", creditsRequest); // Credits of movie
-// console.log("Top 20 Popular JSON:", popularRequest); // Top Movies
-// console.log("Details JSON:", detailsRequest); // Movie Details
-// console.log("Search Query JSON:", movieRequest); //Search query
+export var getID = async function (movie, year) {
+  const idReq =
+    `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=` +
+    encodeURIComponent(movie) +
+    `&page=1&include_adult=false&year=` +
+    year +
+    `&primary_release_year=` +
+    year;
 
-export var oneReview =
-  `<p>A profound and brilliant film, and the last one made by Andrei Tarkovsky. The story is about life, death and (unsurprisingly) sacrifice, told metaphorically with the impending doom of nuclear holocaust. Alexander (Erland Josephson) is not a religious man, until it seems he is facing the end of the world, and he then begins to bargain with God. Much of the story is ambiguous and isn't fully explained, but I took it as partly showcasing how death is like the end of the world for the person who is experiencing it, and how they choose to face it speaks to that persons personal philosophy.</p>` +
-  `<p>The movie is perfectly crafted. It features some of the best cinematography I've ever seen on film. Tarkovsky patiently paints every scene with deliberate movements and color pallets. He's so good at giving life to the aesthetic of a shot when he wants, and purposefully withholding it when needed. And the music, when it's there, deepens the experience that much more.</p>` +
-  `<p>The film took me through a wealth of emotions, from pure dread and infinite sadness to sincere poetic wonderment of life and the human experience. The dialog is incredible and touched on the deepest elements of existence. And the entire cast is so damn good (notably Susan Fleetwood as Adelaide) that it makes all these emotional notes hit that much harder. The super slow pacing is signature Tarkovsky, and that might not be for everyone, but personally, it only made me that much more absorbed in the world. </p>` +
-  `<p>One of the best films I've ever seen.</p>`;
+  let filmID = await fetch(idReq)
+    .then((response) => response.json())
+    .then((data) => data.results[0].id);
+
+  console.log(filmID);
+  // const finalID = await Promise(filmID);
+};
+
+getID("The Big Lebowski", "1998");

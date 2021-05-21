@@ -14,8 +14,6 @@ const Reviews = () => {
   }, []);
   // works calling ".results[10].Name"
 
-  console.log(review);
-
   return (
     <>
       <h2>Every Motion Pictuce I've Reviewed:</h2>
