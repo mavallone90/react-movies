@@ -11,7 +11,10 @@ function getRandomInt(max) {
 // ID and movies to test with
 export const my_films = [
   "935",
+  "274",
   "24657",
+  "11293",
+  "2565",
   "11286",
   "496243",
   "791373",
@@ -19,23 +22,27 @@ export const my_films = [
   "311",
   "12493",
   "1878",
+  "854",
   "587807",
   "495764",
+  "1895",
   "107",
   "1398",
   "22682",
+  "582014",
   "10098",
   "62",
+  "193613",
   "550",
   "41384",
   "496",
+  "441384",
   "55157",
-  "1895",
   "11576",
+  "11",
 ];
 
-export const currentID = my_films[getRandomInt(15)];
-// export const currentID = my_films[4];
+export const currentID = my_films[getRandomInt(29)];
 
 //search for movie:
 export const searchTitle = encodeURIComponent("Fear and Loathing in Las Vegas"); // FIXED - Need spaces to be accepted

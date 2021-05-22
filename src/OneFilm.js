@@ -46,7 +46,7 @@ const OneFilm = () => {
       {/* In case there's no tagline */}
       <div className="aPoster">
         <div id="tagline">
-          <h3 id="taglineT">{film.tagline ? `"${film.tagline}"` : ""}</h3>
+          <p id="taglineT">{film.tagline ? `"${film.tagline}"` : ""}</p>
         </div>
         {/* was getting a "GET https://image.tmdb.org/t/p/originalundefined 404" error with the && */}
         {film.id && (
@@ -59,11 +59,17 @@ const OneFilm = () => {
         <div className="released">
           Released {formateDate(film.release_date)} <br></br>
           {film.runtime} mins <br></br>
-          {film.revenue > 0 ? (
-            <p>Grossed ${numberWithCommas(film.revenue)}</p>
+          {film.budget > 0 ? (
+            <p>Budget: ${numberWithCommas(film.budget)}</p>
           ) : (
             ""
           )}
+          {/* {film.revenue > 0 ? (
+            <p>Grossed: ${numberWithCommas(film.revenue)}</p>
+          ) : (
+            ""
+          )} */}
+          {/* Not sure if I want to include revenue, budget, or both */}
         </div>
       </div>
 
@@ -92,12 +98,11 @@ const OneFilm = () => {
         </div>
         <div className="someParagraphs">
           <p>There is no review of this film</p>
-          {/* PROBLEM! - WOuld like this review text to to be in a variable I can keep in const.js and intsert.  
-          But when I do that it displaysa all the <p> tags and such.  And does not format. */}
         </div>
       </div>
 
       <div id="theCast">
+        <p>Starring...</p>
         {credit.cast &&
           credit.cast.map((ppl) => {
             if (ppl.order < 10) {

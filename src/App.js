@@ -28,32 +28,34 @@ function App() {
       <header>
         <h1
           style={{
-            // visibility: "hidden",
-            height: "50px",
+            visibility: "hidden",
+            height: "10px",
             marginLeft: "2%",
             marginTop: "0px",
             marginBottom: "0px",
+            // position: "fixed",
           }}
         >
           It's movie time!
         </h1>
       </header>
-      <Router>
-        <Nav run={run} />
-        <Switch>
-          <Route exact path="/">
-            <Film />
-          </Route>
-          <Route exact path="/Great" component={Films} />
-          <Route exact path="/Reviews" component={Reviews} />
-          <Route exact path="/Upcoming" component={Upcoming} />
-          <Route exact path="/Current" component={Current} />
-          <Route path="/OneFilm/:currentID" component={OneFilm} />
-        </Switch>
-      </Router>
+      <div className="stuff">
+        <Router>
+          <Nav run={run} />
+          <Switch>
+            <Route exact path="/">
+              <Film />
+            </Route>
+            <Route exact path="/Great" component={Films} />
+            <Route exact path="/Reviews" component={Reviews} />
+            <Route exact path="/Upcoming" component={Upcoming} />
+            <Route exact path="/Current" component={Current} />
+            <Route path="/OneFilm/:currentID" component={OneFilm} />
+          </Switch>
+        </Router>
+      </div>
     </main>
   );
 }
-// I Have the single <Film /> page commented out for now, while I"m testing
 
 export default App;

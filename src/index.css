@@ -29,7 +29,13 @@ nav {
   display: grid;
   grid-template-columns: 2% 96% 2%;
   height: 75px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+  position: fixed;
+  background-color: hsla(196, 24%, 88%, 0.95);
+  z-index: 2;
 }
 
 nav ul {
@@ -38,6 +44,7 @@ nav ul {
   justify-content: space-between;
   padding: 0;
   margin-top: 0px;
+  margin-bottom: 0;
   grid-column: 2;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -69,23 +76,29 @@ nav ul li {
 #searchThing {
   opacity: 75%;
   padding: 8px;
-  max-width: 175px;
+  width: 155px;
   font-size: 16px;
   color: rgba(0, 0, 0, 1);
   border: 1px solid rgba(0, 0, 0, 0.35);
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   border-radius: 5px;
   text-align: center;
+  transition: all 0.75s ease 0.05s;
 }
 #searchThing:focus {
   outline: 0;
   opacity: 100%;
+  width: 240px;
   background-color: white;
   color: black;
   box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.1);
 }
 #searchThing:hover {
   border: 1px solid rgba(0, 0, 0, 0.69);
+}
+
+.stuff {
+  padding-top: 100px;
 }
 
 .aFilm {
@@ -105,10 +118,8 @@ nav ul li {
 /* the tagline */
 #tagline {
   min-height: 100px;
-  font-size: 12px;
   margin: 0;
   font-style: italic;
-  opacity: 80%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -185,7 +196,7 @@ nav ul li {
   margin-bottom: 10px;
 }
 
-#theCast p:first-child {
+#theCast p:nth-child(2) {
   color: #b96a9f;
 }
 
