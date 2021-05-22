@@ -28,8 +28,8 @@ function App() {
       <header>
         <h1
           style={{
-            visibility: "hidden",
-            height: "20px",
+            // visibility: "hidden",
+            height: "50px",
             marginLeft: "2%",
             marginTop: "0px",
             marginBottom: "0px",

@@ -30,7 +30,7 @@ const Films = () => {
         return (
           <Link to={`OneFilm/${film.id}`} key={film.id}>
             <article>
-              <h3>
+              <h3 className="greatTitle">
                 {film.title} ({justYear(film.release_date)})
               </h3>
               <img

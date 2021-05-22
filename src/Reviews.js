@@ -15,8 +15,8 @@ const Reviews = () => {
   // works calling ".results[10].Name"
 
   return (
-    <>
-      <h2>Every Motion Pictuce I've Reviewed:</h2>
+    <div style={{ paddingLeft: "20px" }}>
+      <h2> Every Motion Pictuce I've Reviewed:</h2>
       <ol>
         {review.results &&
           review.results.map((rev) => (
@@ -28,7 +28,23 @@ const Reviews = () => {
             </li>
           ))}
       </ol>
-    </>
+      <h2> Perfect Movies:</h2>
+      <ul>
+        {review.results &&
+          review.results.map((rev) => {
+            if (rev.Rating === 5) {
+              return (
+                <a href={rev["Letterboxd URI"]}>
+                  <li>
+                    {rev.Name} ({rev.Year}) <br></br>reviewed {rev.Date}
+                  </li>
+                  <p>{rev.Review}</p>
+                </a>
+              );
+            } else return [];
+          })}
+      </ul>
+    </div>
   );
 };
 

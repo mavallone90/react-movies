@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-// import { tmdb_apikey } from "./consts";
+import { NavLink } from "react-router-dom";
 
 const Nav = ({ run }) => {
   const [search, setSearch] = React.useState("");
@@ -16,26 +15,33 @@ const Nav = ({ run }) => {
     }
   }
 
+  const onThisLink = {
+    color: "#06252b",
+    fontSize: "110%",
+    fontWeight: "bold",
+    borderBottom: "1px solid",
+  };
+
   return (
     <nav>
       <ul>
         {/* <li>
           <img src="pop.png" style={{ height: "50px" }} />
         </li> */}
-        <li>
-          {/* <Link to="/" className="navItem">
+        {/* <li>
+          <NavLink exact to="/" className="navItem" activeStyle={onThisLink}>
             Home
-          </Link> */}
-        </li>
+          </NavLink>
+        </li> */}
         <li>
-          <Link to="/Reviews" className="navItem">
+          <NavLink to="/Reviews" className="navItem" activeStyle={onThisLink}>
             Reviews
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/Great" className="navItem">
+          <NavLink to="/Great" className="navItem" activeStyle={onThisLink}>
             Great Films
-          </Link>
+          </NavLink>
         </li>
         <li>
           <input
@@ -50,14 +56,14 @@ const Nav = ({ run }) => {
           {/* <input type="submit" id="submitThing" onClick={handleSubmit} /> */}
         </li>
         <li>
-          <Link to="/Current" className="navItem">
+          <NavLink to="/Current" className="navItem" activeStyle={onThisLink}>
             Current Movies
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/Upcoming" className="navItem">
+          <NavLink to="/Upcoming" className="navItem" activeStyle={onThisLink}>
             Upcoming Flicks
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>
