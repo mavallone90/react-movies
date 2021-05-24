@@ -27,7 +27,6 @@ const Film = () => {
   React.useEffect(() => {
     let desiredHeight = centerHeight.current.offsetHeight;
     if (desiredHeight > 100) {
-      // console.log(desiredHeight);
       document.getElementById("tagline").style.height = desiredHeight + "px";
       document.getElementById("theCast").style.paddingTop =
         desiredHeight + "px";
@@ -124,6 +123,7 @@ const Film = () => {
       </div>
 
       <div id="theCast">
+        <p>Starring...</p>
         {credit.cast &&
           credit.cast.map((ppl) => {
             if (ppl.order < 10) {

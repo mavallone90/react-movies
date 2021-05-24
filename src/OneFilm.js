@@ -30,7 +30,6 @@ const OneFilm = () => {
   React.useEffect(() => {
     let desiredHeight = centerHeight.current.offsetHeight;
     if (desiredHeight > 100) {
-      // console.log(desiredHeight);
       document.getElementById("tagline").style.height = desiredHeight + "px";
       document.getElementById("theCast").style.paddingTop =
         desiredHeight + "px";

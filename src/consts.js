@@ -1,5 +1,5 @@
 // export const root = document.querySelector(".site-wrap");
-// const feed = "https://letterboxd.com/itsmeyouknow/rss/";
+export const feed = "https://letterboxd.com/itsmeyouknow/rss/";
 export const tmdb_apikey = "a735bdf539e3961056f00ec379922d26";
 export const IMAGE_URL = "https://image.tmdb.org/t/p/original";
 export const small_IMAGE_URL = "https://image.tmdb.org/t/p/w500";
@@ -92,12 +92,11 @@ export var getID = async function (movie, year) {
     `&primary_release_year=` +
     year;
 
-  let filmID = await fetch(idReq)
+  const filmID = await fetch(idReq)
     .then((response) => response.json())
     .then((data) => data.results[0].id);
 
-  console.log(filmID);
-  // const finalID = await Promise(filmID);
+  console.log(filmID); // const finalID = await Promise(filmID);
 };
 
 getID("The Big Lebowski", "1998");

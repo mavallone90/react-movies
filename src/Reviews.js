@@ -3,9 +3,9 @@ import React from "react";
 const Reviews = () => {
   const [review, setReview] = React.useState([]);
 
-  React.useEffect(() => {
-    fetch("/allReviews.json").then((data) => setReview(data));
-  }, []);
+  // React.useEffect(() => {
+  //   fetch("/allReviews.json").then((data) => setReview(data));
+  // }, []);
 
   React.useEffect(() => {
     fetch("./allReviews.json")
@@ -16,7 +16,7 @@ const Reviews = () => {
 
   return (
     <div style={{ paddingLeft: "20px" }}>
-      <h2> Every Motion Pictuce I've Reviewed:</h2>
+      <h2> Every Motion Picture I've Reviewed:</h2>
       <ol>
         {review.results &&
           review.results.map((rev) => (

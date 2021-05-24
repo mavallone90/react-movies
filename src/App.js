@@ -6,6 +6,7 @@ import Upcoming from "./Upcoming";
 import Current from "./Current";
 import OneFilm from "./OneFilm";
 import Reviews from "./Reviews";
+import Get from "./Getting";
 import { tmdb_apikey } from "./consts";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -39,6 +40,7 @@ function App() {
           It's movie time!
         </h1>
       </header>
+      {console.log("hello you")}
       <div className="stuff">
         <Router>
           <Nav run={run} />
@@ -46,6 +48,7 @@ function App() {
             <Route exact path="/">
               <Film />
             </Route>
+            <Route exact path="/Get" component={Get} />
             <Route exact path="/Great" component={Films} />
             <Route exact path="/Reviews" component={Reviews} />
             <Route exact path="/Upcoming" component={Upcoming} />
