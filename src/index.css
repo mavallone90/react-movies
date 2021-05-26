@@ -238,3 +238,62 @@ nav ul li {
   max-width: 90%;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
+
+@media only screen and (max-width: 800px) {
+  body,
+  nav {
+    background-color: whitesmoke;
+  }
+
+  .navItem {
+    visibility: hidden;
+    width: 0;
+  }
+
+  .aFilm {
+    display: grid;
+    grid-template-columns: 7.5% 85% 7.5%;
+    min-height: 700px;
+    position: relative;
+  }
+
+  .aPoster {
+    grid-column: 2;
+  }
+  #tagline {
+    visibility: collapse;
+  }
+
+  .released {
+    visibility: collapse;
+    height: 0;
+  }
+
+  /* the poster itself */
+  .aPoster img {
+    width: 100%;
+  }
+
+  .someParagraphs {
+    visibility: collapse;
+  }
+
+  /* the title of the film */
+  .aReview {
+    grid-column: 2;
+    position: absolute;
+  }
+
+  #theCast {
+    grid-column: 2;
+    padding-top: 100px;
+    text-align: center;
+  }
+
+  /* ~~~~~~ Multiple films page ~~~~~~~~~~~ */
+
+  .comingAttractions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

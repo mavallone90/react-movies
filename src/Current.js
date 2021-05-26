@@ -1,5 +1,5 @@
 import React from "react";
-import { tmdb_apikey, small_IMAGE_URL } from "./consts";
+import { tmdb_apikey, small_IMAGE_URL, noDec } from "./consts";
 import { Link } from "react-router-dom";
 
 const Current = () => {
@@ -22,6 +22,10 @@ const Current = () => {
             <Link to={`OneFilm/${film.id}`} key={film.id}>
               <article>
                 <h3>{film.title}</h3>
+                <p className="upcomingDate">
+                  {/* Releasing {noYear(film.release_date)} <br></br> */}
+                  Relative Popularity: {noDec(film.popularity)}
+                </p>{" "}
                 <img
                   src={`${small_IMAGE_URL}${film.poster_path}`}
                   alt={`Poster for ${film.title}`}
