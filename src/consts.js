@@ -79,8 +79,32 @@ export var justYear = function (timestamp) {
   return date.getFullYear();
 };
 
+export var noYear = function (timestamp) {
+  var date = new Date(timestamp);
+  // var months = [
+  //   "January",
+  //   "February",
+  //   "March",
+  //   "April",
+  //   "May",
+  //   "June",
+  //   "July",
+  //   "August",
+  //   "September",
+  //   "October",
+  //   "November",
+  //   "December",
+  // ];
+  return date.getMonth() + 1 + "/" + date.getDate();
+};
+
 export function numberWithCommas(x) {
   if (x > 0) return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+export function noDec(x) {
+  var y = x.toFixed(0);
+  return y;
 }
 
 export var getID = async function (movie, year) {
