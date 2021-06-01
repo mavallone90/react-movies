@@ -3,7 +3,7 @@ import { tmdb_apikey } from "./consts";
 
 const ReviewsPlus = () => {
   const [review, setReview] = React.useState([]);
-  // const [reviewPlus, setReviewPlus] = React.useState([]);
+  const [reviewPlus, setReviewPlus] = React.useState([]);
 
   var getID = async function (movie, year) {
     const idReq =
@@ -21,8 +21,14 @@ const ReviewsPlus = () => {
         console.log(error);
       });
 
+    const ans = await Promise.resolve(filmID);
+
+    // new Promise((resolve, reject) => resolve(filmID)).then((res) =>
+    //   console.log(res)
+    // );
+
     // console.log(filmID);
-    return filmID;
+    return ans;
   };
 
   React.useEffect(() => {
@@ -32,26 +38,47 @@ const ReviewsPlus = () => {
   }, []);
 
   // getID("Snatch", "2000");
+  // var testArray = [{ Hi: "Ho", Said: "Hey" }];
+  // console.log(testArray);
 
-  var idArray = [];
+  React.useEffect(() => {
+    var idArray = [];
 
-  review.results &&
-    review.results.map((rev) => {
-      if (rev.Rating === 5) {
-        // return console.log(getID(rev.Name, rev.Year));
-        return idArray.push(
-          rev.Name + " " + rev.Year,
-          getID(rev.Name, rev.Year)
-        );
-      } else return [];
-    });
+    review.results &&
+      review.results.map(async (rev) => {
+        if (rev.Rating === 5) {
+          // return console.log(getID(rev.Name, rev.Year));
+          return idArray.push(
+            // [{ Item: await getID(rev.Name, rev.Year), Other: "Thing" }]
+            [
+              {
+                id: await getID(rev.Name, rev.Year),
+                title: rev.Name,
+                year: rev.Year,
+                rating10: rev.Rating * 2,
+                theReview: rev.Review,
+                lb_link: rev["Letterboxd URI"],
+                local_link:
+                  "http://localhost:3000/OneFilm/" +
+                  (await getID(rev.Name, rev.Year)),
+              },
+            ]
+          );
+          // rev.Name + " " + rev.Year,
+        } else return [];
+      });
 
-  console.log(idArray);
+    // console.log(idArray);
+    setReviewPlus(idArray);
+  }, [review.results]);
+
+  console.log(reviewPlus[0]);
 
   return (
     <div style={{ paddingLeft: "20px" }}>
       <h2> Perfect Movies:</h2>
-      <ul>
+      {/* <p>{idArray.toString()}</p> */}
+      {/* <ul>
         {review.results &&
           review.results.map((rev) => {
             if (rev.Rating === 5) {
@@ -65,7 +92,7 @@ const ReviewsPlus = () => {
               );
             } else return [];
           })}
-      </ul>
+      </ul> */}
     </div>
   );
 };
