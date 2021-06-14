@@ -3,13 +3,15 @@ import { tmdb_apikey } from "./consts";
 
 const ReviewsPlus = () => {
   const [review, setReview] = React.useState([]);
+  const [loading, setLoading] = React.useState();
+
   React.useEffect(() => {
     fetch("./allReviews.json")
       .then((res) => res.json())
       .then((data) => setReview(data));
   }, []);
 
-  var getID = async function (movie, year) {
+  var getID = function (movie, year) {
     const idReq =
       `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=` +
       encodeURIComponent(movie) +
@@ -18,21 +20,14 @@ const ReviewsPlus = () => {
       `&primary_release_year=` +
       year;
 
-    let filmID = await fetch(idReq)
+    let filmID = fetch(idReq)
       .then((response) => response.json())
       .then((data) => data.results[0].id)
       .catch(function (error) {
-        console.log("broken ids.");
+        console.log("Broke, 8?");
       });
 
-    const ans = await Promise.resolve(filmID);
-
-    // new Promise((resolve, reject) => resolve(filmID)).then((res) =>
-    //   console.log(res)
-    // );
-
-    // console.log(filmID);
-    return ans;
+    return filmID;
   };
 
   // getID("Snatch", "2000");
@@ -40,46 +35,91 @@ const ReviewsPlus = () => {
   const [reviewPlus, setReviewPlus] = React.useState([]);
 
   React.useEffect(() => {
-    // var idArray = { i: [] };
+    const getItAll = async () => {
+      const getIt = async () => {
+        var superState = [];
+        // setLoading(true);
 
-    review.results &&
-      review.results.map(async (rev) => {
-        if (rev.Rating === 5 || rev.Rating === 4.5) {
-          reviewPlus.push({
-            id: await getID(rev.Name, rev.Year),
-            title: rev.Name,
-            year: rev.Year,
-            rating10: rev.Rating * 2,
-            theReview: rev.Review,
-            lb_link: rev["Letterboxd URI"],
-            // local_link:
-            //   "http://localhost:3000/OneFilm/" +
-            //   (await getID(rev.Name, rev.Year)),
+        review.results &&
+          review.results.map(async (rev, index) => {
+            if (rev.Rating === 5 || rev.Rating === 4.5) {
+              // setLoading(true);
+              superState.push({
+                id: await getID(rev.Name, rev.Year),
+                title: rev.Name,
+                year: rev.Year,
+                rating10: rev.Rating * 2,
+                theReview: rev.Review,
+                lb_link: rev["Letterboxd URI"],
+              });
+            } else return "";
           });
-        } else return [];
-      });
+        return superState;
+      };
+      // review.results ? console.log("True") : setLoading(false);
+      if (review.results) {
+        const superState = await getIt();
 
-    // console.log(idArray);
-    setReviewPlus(reviewPlus);
-  }, [review.results, reviewPlus]);
+        const supersuperState = await Promise.resolve(superState);
 
+        setReviewPlus(supersuperState);
+        return supersuperState;
+      } else {
+        setLoading(true);
+      }
+    };
+
+    getItAll();
+
+    review.results && reviewPlus.length > 0
+      ? console.log("Made it. Length of RP: " + reviewPlus.length)
+      : console.log("Did not make it");
+  }, [review.results]);
+
+  // React.useEffect(() => {
+  //   // if (reviewPlus.length && loading === false) {
+  //   //   setReviewPlus([...reviewPlus]);
+  //   // }
+  //   setTimeout(function () {
+  //     setReviewPlus([...reviewPlus]);
+  //   }, 5000);
+  // }, [loading]);
+
+  console.log("RP: " + reviewPlus.length + " before return");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setReviewPlus([...reviewPlus]);
+    setLoading(false);
+  }
+
+  if (loading) {
+    return (
+      <div style={{ paddingLeft: "20px" }}>
+        <h2> Great Movies are coming soon </h2>
+        <p>Loading...</p>
+        <button type="submit" onClick={handleSubmit}>
+          Load Films
+        </button>
+      </div>
+    );
+  }
   return (
     <div style={{ paddingLeft: "20px" }}>
-      <h2> Great Fucking Movies:</h2>
-      <ul>
+      <h2> Great Movies...</h2>
+      <ol>
         {reviewPlus &&
           reviewPlus.map((rev) => {
             return (
               <li key={rev.title}>
                 {rev.title} ({rev.year}){" "}
                 <em style={{ color: "red" }}>
-                  {rev.id ? "" : "BROKE!  FIX THIS SHIT!"}
+                  {rev.id ? "" : "BROKE!!  FIX THIS SHIT!!"}
                 </em>
               </li>
-              // console.log("A Movie:", rev.title, "// The ID:", rev.id)
             );
           })}
-      </ul>
+      </ol>
     </div>
   );
 };
