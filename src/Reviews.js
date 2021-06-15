@@ -1,11 +1,24 @@
 import React from "react";
+import { tmdb_apikey } from "./consts";
 
 const Reviews = () => {
   const [review, setReview] = React.useState([]);
+  var getID = async function (movie, year) {
+    const idReq =
+      `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=` +
+      encodeURIComponent(movie) +
+      `&page=1&include_adult=false&year=` +
+      year +
+      `&primary_release_year=` +
+      year;
 
-  React.useEffect(() => {
-    fetch("/allReviews.json").then((data) => setReview(data));
-  }, []);
+    let filmID = await fetch(idReq)
+      .then((response) => response.json())
+      .then((data) => data.results[0].id);
+
+    return filmID;
+    // const finalID = await Promise(filmID);
+  };
 
   React.useEffect(() => {
     fetch("./allReviews.json")
@@ -14,8 +27,16 @@ const Reviews = () => {
   }, []);
   // works calling ".results[10].Name"
 
+  // React.useEffect(() => {});
+
+  const x = getID("The Big Lebowski", "1998");
+  console.log(x);
+
   return (
     <div style={{ paddingLeft: "20px" }}>
+      <a href="/ReviewsPlus" className="navItem">
+        Reviws Plus
+      </a>
       <h2> Every Motion Pictuce I've Reviewed:</h2>
       <ol>
         {review.results &&

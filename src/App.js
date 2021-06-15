@@ -6,6 +6,7 @@ import Upcoming from "./Upcoming";
 import Current from "./Current";
 import OneFilm from "./OneFilm";
 import Reviews from "./Reviews";
+import ReviewsPlus from "./ReviewsPlus";
 import { tmdb_apikey } from "./consts";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -47,6 +48,7 @@ function App() {
               <Film />
             </Route>
             <Route exact path="/Great" component={Films} />
+            <Route exact path="/ReviewsPlus" component={ReviewsPlus} />
             <Route exact path="/Reviews" component={Reviews} />
             <Route exact path="/Upcoming" component={Upcoming} />
             <Route exact path="/Current" component={Current} />

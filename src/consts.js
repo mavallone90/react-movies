@@ -107,21 +107,21 @@ export function noDec(x) {
   return y;
 }
 
-export var getID = async function (movie, year) {
-  const idReq =
-    `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=` +
-    encodeURIComponent(movie) +
-    `&page=1&include_adult=false&year=` +
-    year +
-    `&primary_release_year=` +
-    year;
+// export var getID = async function (movie, year) {
+//   const idReq =
+//     `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=` +
+//     encodeURIComponent(movie) +
+//     `&page=1&include_adult=false&year=` +
+//     year +
+//     `&primary_release_year=` +
+//     year;
 
-  let filmID = await fetch(idReq)
-    .then((response) => response.json())
-    .then((data) => data.results[0].id);
+//   let filmID = await fetch(idReq)
+//     .then((response) => response.json())
+//     .then((data) => data.results[0].id);
 
-  console.log(filmID);
-  // const finalID = await Promise(filmID);
-};
+//   console.log(filmID);
+//   // const finalID = await Promise(filmID);
+// };
 
-getID("The Big Lebowski", "1998");
+// getID("The Big Lebowski", "1998");

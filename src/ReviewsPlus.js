@@ -30,20 +30,16 @@ const ReviewsPlus = () => {
     return filmID;
   };
 
-  // getID("Snatch", "2000");
-
   const [reviewPlus, setReviewPlus] = React.useState([]);
 
   React.useEffect(() => {
     const getItAll = async () => {
       const getIt = async () => {
         var superState = [];
-        // setLoading(true);
 
         review.results &&
           review.results.map(async (rev, index) => {
             if (rev.Rating === 5 || rev.Rating === 4.5) {
-              // setLoading(true);
               superState.push({
                 id: await getID(rev.Name, rev.Year),
                 title: rev.Name,
@@ -56,11 +52,12 @@ const ReviewsPlus = () => {
           });
         return superState;
       };
-      // review.results ? console.log("True") : setLoading(false);
       if (review.results) {
         const superState = await getIt();
 
-        const supersuperState = await Promise.resolve(superState);
+        const supersuperState = await Promise.resolve(superState).then(
+          setLoading(false)
+        );
 
         setReviewPlus(supersuperState);
         return supersuperState;
@@ -70,22 +67,7 @@ const ReviewsPlus = () => {
     };
 
     getItAll();
-
-    review.results && reviewPlus.length > 0
-      ? console.log("Made it. Length of RP: " + reviewPlus.length)
-      : console.log("Did not make it");
   }, [review.results]);
-
-  // React.useEffect(() => {
-  //   // if (reviewPlus.length && loading === false) {
-  //   //   setReviewPlus([...reviewPlus]);
-  //   // }
-  //   setTimeout(function () {
-  //     setReviewPlus([...reviewPlus]);
-  //   }, 5000);
-  // }, [loading]);
-
-  console.log("RP: " + reviewPlus.length + " before return");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -96,17 +78,21 @@ const ReviewsPlus = () => {
   if (loading) {
     return (
       <div style={{ paddingLeft: "20px" }}>
-        <h2> Great Movies are coming soon </h2>
+        <h2> Great Movies</h2>
         <p>Loading...</p>
-        <button type="submit" onClick={handleSubmit}>
+        {/* <button type="submit" onClick={handleSubmit}>
           Load Films
-        </button>
+        </button> */}
       </div>
     );
   }
   return (
     <div style={{ paddingLeft: "20px" }}>
-      <h2> Great Movies...</h2>
+      <h2> Great Movies</h2>
+      <p>All the films I have rated a 9/10 or 10/10</p>
+      <button type="submit" onClick={handleSubmit}>
+        Load Films
+      </button>
       <ol>
         {reviewPlus &&
           reviewPlus.map((rev) => {
@@ -116,6 +102,21 @@ const ReviewsPlus = () => {
                 <em style={{ color: "red" }}>
                   {rev.id ? "" : "BROKE!!  FIX THIS SHIT!!"}
                 </em>
+                <br></br>
+                <a href={rev.lb_link} className="navItem">
+                  Letterboxd Entry
+                </a>
+                <a href>-</a>
+                <a
+                  href={"/OneFilm/" + (rev.id ? rev.id : "")}
+                  className="navItem"
+                >
+                  Mikes Link
+                </a>
+                <details className="reviewHere">
+                  <summary>Read Review:</summary>
+                  {rev.theReview}
+                </details>
               </li>
             );
           })}

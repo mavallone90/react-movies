@@ -58,7 +58,7 @@ const OneFilm = () => {
         )}
         <div className="released">
           Released {formateDate(film.release_date)} <br></br>
-          {film.runtime ? film.runtime + "mins" : ""}
+          {film.runtime ? film.runtime + " mins" : ""}
           <br></br>
           {film.budget > 0 ? (
             <p>Budget: ${numberWithCommas(film.budget)}</p>
