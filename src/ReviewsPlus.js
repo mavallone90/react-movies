@@ -1,5 +1,6 @@
 import React from "react";
 import { tmdb_apikey } from "./consts";
+const nl2br = require("react-nl2br");
 
 const ReviewsPlus = () => {
   const [review, setReview] = React.useState([]);
@@ -16,15 +17,16 @@ const ReviewsPlus = () => {
       `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=` +
       encodeURIComponent(movie) +
       `&page=1&include_adult=false&year=` +
-      year +
-      `&primary_release_year=` +
       year;
+    // +
+    // `&primary_release_year=` +
+    // year;
 
     let filmID = fetch(idReq)
       .then((response) => response.json())
       .then((data) => data.results[0].id)
       .catch(function (error) {
-        console.log("Broke, 8?");
+        console.log("Broke, 8? Now 4");
       });
 
     return filmID;
@@ -73,6 +75,7 @@ const ReviewsPlus = () => {
     e.preventDefault();
     setReviewPlus([...reviewPlus]);
     setLoading(false);
+    document.getElementById("loadBtn").style.display = "none";
   }
 
   if (loading) {
@@ -90,7 +93,7 @@ const ReviewsPlus = () => {
     <div style={{ paddingLeft: "20px" }}>
       <h2> Great Movies</h2>
       <p>All the films I have rated a 9/10 or 10/10</p>
-      <button type="submit" onClick={handleSubmit}>
+      <button type="submit" onClick={handleSubmit} id="loadBtn">
         Load Films
       </button>
       <ol>
@@ -108,14 +111,14 @@ const ReviewsPlus = () => {
                 </a>
                 <a href>-</a>
                 <a
-                  href={"/OneFilm/" + (rev.id ? rev.id : "")}
+                  href={rev.id ? "/OneFilm/" + rev.id : ""}
                   className="navItem"
                 >
                   Mikes Link
                 </a>
                 <details className="reviewHere">
                   <summary>Read Review:</summary>
-                  {rev.theReview}
+                  {nl2br(rev.theReview)}
                 </details>
               </li>
             );
