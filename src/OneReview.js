@@ -1,5 +1,5 @@
 import React from "react";
-// import nl2br from "react-nl2br";
+import nl2br from "react-nl2br";
 import { tmdb_apikey } from "./consts";
 import { useParams } from "react-router-dom";
 
@@ -30,62 +30,56 @@ const OneReview = () => {
   };
 
   const [reviewPlus, setReviewPlus] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    const getItAll = async () => {
-      const getIt = async () => {
-        review.results &&
-          review.results.map(async (rev, index) => {
-            const id = await getID(rev.Name, rev.Year);
-            const pageID = reviewID.toString();
-            console.log(
-              (id ? id.toString() : 0) === pageID
-                ? index +
-                    "ID: " +
-                    id +
-                    " is " +
-                    pageID +
-                    "? \n TRUE... " +
-                    rev.Name +
-                    ": \n" +
-                    rev.Review
-                : ""
-            );
-          });
-      };
-      if (review.results) {
-        const superState = await getIt();
+    const getIt = async () => {
+      review.results &&
+        review.results.map(async (rev, index) => {
+          const id = await getID(rev.Name, rev.Year);
+          const pageID = reviewID.toString();
+          const foundFilm = () => {
+            setReviewPlus({
+              id: id,
+              name: rev.Name,
+              review: rev.Review,
+              rating10: rev.Rating * 20,
+              lb_link: rev["Letterboxd URI"],
+            });
+            setLoading(false);
+          };
 
-        const supersuperState = await Promise.resolve(superState);
-        // .then(
-        //   setLoading(false)
-        // );
-
-        setReviewPlus(supersuperState);
-        return supersuperState;
-      } else {
-        // setLoading(true);
-      }
+          (id ? id.toString() : 0) === pageID
+            ? foundFilm()
+            : console.log("None");
+        });
     };
-
-    getItAll();
+    getIt();
   }, [review.results, reviewID]);
 
-  console.log(reviewPlus);
-
-  function handleSubmit(e) {
-    e.preventDefault();
+  function fail() {
+    if (document.getElementById("failed")) {
+      document.getElementById("failed").innerHTML =
+        "Lookin' like Mike didn't write one";
+    }
   }
+  setTimeout(fail, 6000);
 
+  if (loading) {
+    return (
+      <div className="someParagraphs">
+        <p id="failed">Lookin' for a review</p>
+      </div>
+    );
+  }
   return (
-    <>
-      <h2>
-        A Movie:{tmdb_apikey} and {reviewID}
-      </h2>
-      <button type="submit" onClick={handleSubmit} id="loadBtn">
-        Load Films
-      </button>
-    </>
+    <div className="someParagraphs">
+      <p>{reviewPlus && nl2br(reviewPlus.review)}</p>
+      <h3>
+        {reviewPlus && reviewPlus.rating10} / 100 <br></br>
+        <a href={reviewPlus.lb_link}>Letterboxd Link</a>
+      </h3>
+    </div>
   );
 };
 

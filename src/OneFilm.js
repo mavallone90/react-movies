@@ -98,7 +98,7 @@ const OneFilm = () => {
           </div>
         </div>
         <div className="someParagraphs">
-          <p>There is no review of this film</p>
+          <a href={"/OneReview/" + currentID}>Click here to find review</a>
         </div>
       </div>
 
