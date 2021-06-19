@@ -35,9 +35,12 @@ const Reviews = () => {
   return (
     <div style={{ paddingLeft: "20px" }}>
       <a href="/ReviewsPlus" className="navItem">
-        Reviws Plus
+        Reviews+
       </a>
-      <h2> Every Motion Pictuce I've Reviewed:</h2>
+      <h2>
+        <br></br>
+        Every Motion Pictuce I've Reviewed:
+      </h2>
       <ol>
         {review.results &&
           review.results.map((rev) => (

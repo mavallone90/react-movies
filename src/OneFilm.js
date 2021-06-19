@@ -7,6 +7,7 @@ import {
   tmdb_apikey,
 } from "./consts";
 import { useParams } from "react-router-dom";
+import OneReview from "./OneReview";
 
 const OneFilm = () => {
   const [film, setFilm] = React.useState([]);
@@ -48,7 +49,6 @@ const OneFilm = () => {
         <div id="tagline">
           <p id="taglineT">{film.tagline ? `"${film.tagline}"` : ""}</p>
         </div>
-        {/* was getting a "GET https://image.tmdb.org/t/p/originalundefined 404" error with the && */}
         {film.id && (
           <img
             className={`thePoster`}
@@ -98,7 +98,7 @@ const OneFilm = () => {
           </div>
         </div>
         <div className="someParagraphs">
-          <a href={"/OneReview/" + currentID}>Click here to find review</a>
+          <OneReview id={currentID} />
         </div>
       </div>
 
@@ -114,7 +114,6 @@ const OneFilm = () => {
               );
             } else {
               return [];
-              // Was getting an error without this 'else' 'return' and the empty array
             }
           })}
       </div>

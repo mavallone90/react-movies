@@ -5,7 +5,7 @@ import Nav from "./Nav";
 import Upcoming from "./Upcoming";
 import Current from "./Current";
 import OneFilm from "./OneFilm";
-import OneReview from "./OneReview";
+// import OneReview from "./OneReview";
 import Reviews from "./Reviews";
 import ReviewsPlus from "./ReviewsPlus";
 import { tmdb_apikey } from "./consts";
@@ -54,7 +54,7 @@ function App() {
             <Route exact path="/Upcoming" component={Upcoming} />
             <Route exact path="/Current" component={Current} />
             <Route path="/OneFilm/:currentID" component={OneFilm} />
-            <Route path="/OneReview/:reviewID" component={OneReview} />
+            {/* <Route path="/OneReview/:reviewID" component={OneReview} /> */}
           </Switch>
         </Router>
       </div>

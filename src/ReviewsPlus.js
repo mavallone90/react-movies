@@ -1,6 +1,6 @@
 import React from "react";
 import { tmdb_apikey } from "./consts";
-const nl2br = require("react-nl2br");
+import nl2br from "react-nl2br";
 
 const ReviewsPlus = () => {
   const [review, setReview] = React.useState([]);

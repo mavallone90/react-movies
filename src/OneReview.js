@@ -1,10 +1,10 @@
 import React from "react";
 import nl2br from "react-nl2br";
 import { tmdb_apikey } from "./consts";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
-const OneReview = () => {
-  const { reviewID } = useParams();
+const OneReview = (prop) => {
+  // const { reviewID } = useParams();
   const [review, setReview] = React.useState([]);
 
   React.useEffect(() => {
@@ -37,7 +37,7 @@ const OneReview = () => {
       review.results &&
         review.results.map(async (rev, index) => {
           const id = await getID(rev.Name, rev.Year);
-          const pageID = reviewID.toString();
+          const pageID = prop.id.toString();
           const foundFilm = () => {
             setReviewPlus({
               id: id,
@@ -55,7 +55,7 @@ const OneReview = () => {
         });
     };
     getIt();
-  }, [review.results, reviewID]);
+  }, [review.results, prop.id]);
 
   function fail() {
     if (document.getElementById("failed")) {
