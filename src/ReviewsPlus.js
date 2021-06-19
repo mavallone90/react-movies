@@ -7,7 +7,7 @@ const ReviewsPlus = () => {
   const [loading, setLoading] = React.useState();
 
   React.useEffect(() => {
-    fetch("./allReviews.json")
+    fetch("./allReviews2.json")
       .then((res) => res.json())
       .then((data) => setReview(data));
   }, []);

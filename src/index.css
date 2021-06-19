@@ -106,6 +106,7 @@ nav ul li {
   display: grid;
   grid-template-columns: 30.5% 2% 35% 2% 30.5%;
   min-height: 700px;
+  padding-bottom: 25px;
 }
 
 .aPoster {
@@ -172,7 +173,7 @@ nav ul li {
 }
 
 /* the director */
-.theDirector p {
+.theDirector {
   margin: 0;
   font-size: 20px;
   color: #b96a9f;
@@ -306,4 +307,82 @@ nav ul li {
 
 .reviewHere summary {
   margin: 10px;
+}
+
+.rating {
+  float: left;
+}
+
+.lb_lnk {
+  float: right;
+}
+
+.lb_lnk:link,
+.lb_lnk:visited,
+.lb_lnk:active {
+  font-style: normal;
+  text-decoration: underline;
+  color: #0a404d;
+}
+
+.lb_lnk:hover {
+  color: rgb(185, 106, 159);
+}
+
+/* ~~~~~~ Loader ~~~~~~~  */
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 10px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #126e82;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 2px;
+  animation: lds-ellipsis1 0.9s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 2px;
+  animation: lds-ellipsis2 0.9s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.9s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 50px;
+  animation: lds-ellipsis3 0.9s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
 }

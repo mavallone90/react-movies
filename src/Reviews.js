@@ -1,46 +1,28 @@
 import React from "react";
-import { tmdb_apikey } from "./consts";
 
 const Reviews = () => {
   const [review, setReview] = React.useState([]);
-  var getID = async function (movie, year) {
-    const idReq =
-      `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=` +
-      encodeURIComponent(movie) +
-      `&page=1&include_adult=false&year=` +
-      year +
-      `&primary_release_year=` +
-      year;
-
-    let filmID = await fetch(idReq)
-      .then((response) => response.json())
-      .then((data) => data.results[0].id);
-
-    return filmID;
-    // const finalID = await Promise(filmID);
-  };
 
   React.useEffect(() => {
-    fetch("./allReviews.json")
+    fetch("./allReviews2.json")
       .then((res) => res.json())
       .then((data) => setReview(data));
   }, []);
-  // works calling ".results[10].Name"
-
-  // React.useEffect(() => {});
-
-  const x = getID("The Big Lebowski", "1998");
-  console.log(x);
 
   return (
     <div style={{ paddingLeft: "20px" }}>
-      <a href="/ReviewsPlus" className="navItem">
+      <a
+        href="/ReviewsPlus"
+        className="navItem"
+        style={{
+          marginLeft: "0px",
+          textDecoration: "underline",
+          fontSize: "1.5em",
+        }}
+      >
         Reviews+
       </a>
-      <h2>
-        <br></br>
-        Every Motion Pictuce I've Reviewed:
-      </h2>
+      <h2>Every Motion Pictuce I've Reviewed:</h2>
       <ol>
         {review.results &&
           review.results.map((rev) => (

@@ -8,7 +8,7 @@ const OneReview = (prop) => {
   const [review, setReview] = React.useState([]);
 
   React.useEffect(() => {
-    fetch("../allReviews.json")
+    fetch("../allReviews2.json")
       .then((res) => res.json())
       .then((data) => setReview(data))
       .catch((err) => {});
@@ -60,7 +60,7 @@ const OneReview = (prop) => {
   function fail() {
     if (document.getElementById("failed")) {
       document.getElementById("failed").innerHTML =
-        "Lookin' like Mike didn't write one";
+        "Lookin' like Mike didn't write one yet";
     }
   }
   setTimeout(fail, 6000);
@@ -68,17 +68,29 @@ const OneReview = (prop) => {
   if (loading) {
     return (
       <div className="someParagraphs">
-        <p id="failed">Lookin' for a review</p>
+        <p id="failed">
+          Lookin' for a review
+          <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </p>
       </div>
     );
   }
   return (
     <div className="someParagraphs">
       <p>{reviewPlus && nl2br(reviewPlus.review)}</p>
-      <h3>
-        {reviewPlus && reviewPlus.rating10} / 100 <br></br>
-        <a href={reviewPlus.lb_link}>Letterboxd Link</a>
-      </h3>
+      <div>
+        <span className="rating">
+          {reviewPlus && reviewPlus.rating10} / 100
+        </span>
+        <a href={reviewPlus.lb_link} className="lb_lnk">
+          LB Link
+        </a>
+      </div>
     </div>
   );
 };

@@ -87,10 +87,11 @@ const OneFilm = () => {
             )}
           </h2>
           <div className="theDirector">
+            Directed by{" "}
             {credit.crew &&
               credit.crew.map((ppl) => {
                 if (ppl.job === "Director") {
-                  return <p key={ppl.id}>Directed by {ppl.name}</p>;
+                  return <span key={ppl.id}>{ppl.name} </span>;
                 } else {
                   return [];
                 }
