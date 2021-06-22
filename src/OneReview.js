@@ -1,6 +1,6 @@
 import React from "react";
 import nl2br from "react-nl2br";
-import { tmdb_apikey } from "./consts";
+import { tmdb_apikey, formateDate } from "./consts";
 // import { useParams } from "react-router-dom";
 
 const OneReview = (prop) => {
@@ -39,14 +39,16 @@ const OneReview = (prop) => {
           const id = await getID(rev.Name, rev.Year);
           const pageID = prop.id.toString();
           const foundFilm = () => {
-            setReviewPlus({
+            reviewPlus.push({
               id: id,
               name: rev.Name,
               review: rev.Review,
               rating10: rev.Rating * 20,
+              written: rev["Watched Date"],
               lb_link: rev["Letterboxd URI"],
             });
             setLoading(false);
+            setReviewPlus([...reviewPlus]);
           };
 
           (id ? id.toString() : 0) === pageID
@@ -67,7 +69,7 @@ const OneReview = (prop) => {
 
   if (loading) {
     return (
-      <div className="someParagraphs">
+      <div className="someParagraphsLoading">
         <p id="failed">
           Lookin' for a review
           <div class="lds-ellipsis">
@@ -81,16 +83,28 @@ const OneReview = (prop) => {
     );
   }
   return (
-    <div className="someParagraphs">
-      <p>{reviewPlus && nl2br(reviewPlus.review)}</p>
-      <div>
-        <span className="rating">
-          {reviewPlus && reviewPlus.rating10} / 100
-        </span>
-        <a href={reviewPlus.lb_link} className="lb_lnk">
-          LB Link
-        </a>
-      </div>
+    <div className="someParagraphsReview">
+      {reviewPlus &&
+        reviewPlus.map((r, index) => {
+          return (
+            <article key={"r" + index}>
+              {r.written !== "undefined, NaN" ? (
+                <p>
+                  <i>Wrriten {formateDate(r.written)}</i>
+                </p>
+              ) : (
+                ""
+              )}
+              <p>{r && nl2br(r.review)}</p>
+              <div>
+                <span className="rating">{r && r.rating10} / 100</span>
+                <a href={r.lb_link} className="lb_lnk">
+                  LB Link
+                </a>
+              </div>
+            </article>
+          );
+        })}
     </div>
   );
 };

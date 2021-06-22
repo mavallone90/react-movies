@@ -38,10 +38,12 @@ const ReviewsPlus = () => {
     const getItAll = async () => {
       const getIt = async () => {
         var superState = [];
+        // var superIDs = [];
 
         review.results &&
           review.results.map(async (rev, index) => {
             if (rev.Rating === 5 || rev.Rating === 4.5) {
+              // superIDs.push(await getID(rev.Name, rev.Year));
               superState.push({
                 id: await getID(rev.Name, rev.Year),
                 title: rev.Name,
@@ -52,6 +54,7 @@ const ReviewsPlus = () => {
               });
             } else return "";
           });
+        // console.log(superIDs);
         return superState;
       };
       if (review.results) {

@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { tmdb_apikey, my_films, justYear, small_IMAGE_URL } from "./consts";
+import {
+  tmdb_apikey,
+  // my_films,
+  great_films,
+  justYear,
+  small_IMAGE_URL,
+} from "./consts";
 import { Link } from "react-router-dom";
 
 const Films = () => {
@@ -21,7 +27,7 @@ const Films = () => {
       setFilms(filmsData);
     };
 
-    fetchFilmsData(my_films);
+    fetchFilmsData(great_films);
   }, []);
 
   return (
@@ -34,7 +40,11 @@ const Films = () => {
                 {film.title} ({justYear(film.release_date)})
               </h3>
               <img
-                src={`${small_IMAGE_URL}${film.poster_path}`}
+                src={
+                  film.poster_path
+                    ? `${small_IMAGE_URL}${film.poster_path}`
+                    : []
+                }
                 alt={`Poster for ${film.title}`}
               />
             </article>
