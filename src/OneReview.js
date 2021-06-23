@@ -70,7 +70,7 @@ const OneReview = (prop) => {
   if (loading) {
     return (
       <div className="someParagraphsLoading">
-        <p id="failed">
+        <p id="failed" style={{ margin: 0 }}>
           Lookin' for a review
           <div class="lds-ellipsis">
             <div></div>
@@ -88,16 +88,20 @@ const OneReview = (prop) => {
         reviewPlus.map((r, index) => {
           return (
             <article key={"r" + index}>
-              {r.written !== "undefined, NaN" ? (
+              {r.written !== "undefined, NaN" && r.written ? (
                 <p>
-                  <i>Wrriten {formateDate(r.written)}</i>
+                  <i>Written {formateDate(r.written)}</i>
                 </p>
               ) : (
                 ""
               )}
               <p>{r && nl2br(r.review)}</p>
               <div>
-                <span className="rating">{r && r.rating10} / 100</span>
+                {r.rating10 !== 0 ? (
+                  <span className="rating">{r && r.rating10} / 100</span>
+                ) : (
+                  ""
+                )}
                 <a href={r.lb_link} className="lb_lnk">
                   LB Link
                 </a>

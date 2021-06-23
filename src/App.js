@@ -12,6 +12,10 @@ import { tmdb_apikey } from "./consts";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
+  function nothingFound() {
+    document.getElementById("nada").innerHTML = "we found nada";
+  }
+
   function run(arg) {
     const movieRequest = `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=${arg}&page=1`;
     fetch(movieRequest)
@@ -20,7 +24,7 @@ function App() {
         if (json.total_results > 0) {
           window.location = "/OneFilm/" + json.results[0].id;
         } else {
-          return console.log("Nada");
+          return nothingFound();
         }
       });
   }

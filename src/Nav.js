@@ -44,6 +44,7 @@ const Nav = ({ run }) => {
           </NavLink>
         </li>
         <li>
+          <div id="nada"></div>
           <input
             id="searchThing"
             type="text"

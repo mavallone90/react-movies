@@ -74,6 +74,10 @@ nav ul li {
   color: rgb(185, 106, 159);
 }
 
+#nada {
+  text-align: center;
+}
+
 #searchThing {
   opacity: 75%;
   padding: 8px;
@@ -197,6 +201,14 @@ nav ul li {
 .someParagraphs article {
   padding-top: 0px;
   padding-bottom: 100px;
+}
+
+.someParagraphs article:nth-child(n + 2) {
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.someParagraphs article i {
+  color: black;
 }
 
 #theCast {
