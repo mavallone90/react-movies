@@ -32,37 +32,41 @@ const OneReview = (prop) => {
   const [reviewPlus, setReviewPlus] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
-  React.useEffect(() => {
-    const getIt = async () => {
-      review.results &&
-        review.results.map(async (rev, index) => {
-          const id = await getID(rev.Name, rev.Year);
-          const pageID = prop.id.toString();
-          const foundFilm = () => {
-            reviewPlus.push({
-              id: id,
-              name: rev.Name,
-              review: rev.Review,
-              rating10: rev.Rating * 20,
-              written: rev["Watched Date"],
-              lb_link: rev["Letterboxd URI"],
-            });
-            setLoading(false);
-            setReviewPlus([...reviewPlus]);
-          };
-
-          (id ? id.toString() : 0) === pageID
-            ? foundFilm()
-            : console.log("None");
-        });
-    };
-    getIt();
-  }, [review.results, prop.id]);
+  React.useEffect(
+    () => {
+      const getIt = async () => {
+        review.results &&
+          review.results.map(async (rev, index) => {
+            const id = await getID(rev.Name, rev.Year);
+            const pageID = prop.id.toString();
+            const foundFilm = () => {
+              reviewPlus.push({
+                id: id,
+                name: rev.Name,
+                review: rev.Review,
+                rating10: rev.Rating * 20,
+                written: rev["Watched Date"],
+                lb_link: rev["Letterboxd URI"],
+              });
+              setLoading(false);
+              setReviewPlus([...reviewPlus]);
+            };
+            (id ? id.toString() : 0) === pageID
+              ? foundFilm()
+              : console.log("movies that are not the movie");
+          });
+      };
+      getIt();
+    },
+    [review.results, prop.id] // eslint-disable-line react-hooks/exhaustive-deps
+  );
 
   function fail() {
     if (document.getElementById("failed")) {
       document.getElementById("failed").innerHTML =
-        "Lookin' like Mike didn't write one yet";
+        "Lookin' like Mike didn't write one yet.";
+      document.getElementById("tweet").innerHTML =
+        "You can ask him to write one, @AManNamedMike";
     }
   }
   setTimeout(fail, 6000);
@@ -79,6 +83,14 @@ const OneReview = (prop) => {
             <div></div>
           </div>
         </p>
+        <br></br>
+        <a
+          href="https://twitter.com/AManNamedMike"
+          id="tweet"
+          style={{ textDecoration: "underline" }}
+        >
+          {""}
+        </a>
       </div>
     );
   }

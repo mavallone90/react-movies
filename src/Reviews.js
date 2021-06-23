@@ -34,7 +34,7 @@ const Reviews = () => {
             </li>
           ))}
       </ol>
-      <h2> Perfect Movies:</h2>
+      {/* <h2> Perfect Movies:</h2>
       <ul>
         {review.results &&
           review.results.map((rev) => {
@@ -49,7 +49,7 @@ const Reviews = () => {
               );
             } else return [];
           })}
-      </ul>
+      </ul> */}
     </div>
   );
 };
