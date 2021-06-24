@@ -2,47 +2,54 @@ import React from "react";
 // import { detailsRequest, creditsRequest } from "./consts";
 
 const Film = () => {
-  // const [film, setFilm] = React.useState([]);
-  // const [credit, setCredits] = React.useState([]);
-  // const centerHeight = React.useRef(null);
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
 
-  // React.useEffect(() => {
-  //   fetch(detailsRequest)
-  //     .then((da_response) => da_response.json())
-  //     .then((dat_json) => setFilm(dat_json));
+  const [review, setReview] = React.useState([]);
 
-  //   fetch(creditsRequest)
-  //     .then((da_response) => da_response.json())
-  //     .then((dat_json) => setCredits(dat_json));
-  // }, []);
+  React.useEffect(() => {
+    fetch("./allReviews2.json")
+      .then((res) => res.json())
+      .then((data) => setReview(data));
+  }, []);
 
-  // React.useEffect(() => {
-  //   let desiredHeight = centerHeight.current.offsetHeight;
-  //   if (desiredHeight > 100) {
-  //     // console.log(desiredHeight);
-  //     document.getElementById("tagline").style.height = desiredHeight + "px";
-  //     document.getElementById("theCast").style.paddingTop =
-  //       desiredHeight + "px";
-  //   }
-  // });
-  // PROBLEM! Need to know how to get the last value and stop
-  // Right now it will fix the height disparity after a refresh
-  // I suspect this is inefficient.  I could probably fix the refresh issue,
-  // but stopping useEffect from running indefinitely might be more import
+  function rewrite(i) {
+    document.getElementById("dex").innerHTML = i + 1;
+  }
 
   return (
     <article className="aFilm">
-      {/* In case there's no tagline */}
       <div className="aPoster"></div>
-
       <div className="aReview">
-        <div
-          className="reviewHead"
-          // ref={centerHeight}
-        ></div>
-        <span>This is just the home page</span>
-        {/* PROBLEM! - WOuld like this review text to to be in a variable I can keep in const.js and intsert.  
-          But when I do that it displaysa all the <p> tags and such.  And does not format. */}
+        <div className="reviewHead">
+          {review.results &&
+            review.results.map((rev, index) => {
+              return rewrite(index);
+            })}
+        </div>
+
+        <p>
+          <span style={{ whiteSpace: "nowrap", fontSize: "25px" }}>
+            <span id="dex"></span>
+            <a href={"/OneFilm/" + getRandomInt(50000)}> movie</a> reviews by
+            mike
+            <span style={{ opacity: "0.15" }}>avallone.com</span>
+          </span>
+          <br></br>
+          <br></br>
+
+          <div className="socials">
+            <a href="https://twitter.com/AManNamedMike">twitter</a> <br></br>
+            <a href="https://www.instagram.com/amannamedmike/">instagram</a>
+            <br></br>
+            <a href="https://www.last.fm/user/Nizpee">last.fm</a> <br></br>
+            <a href="https://letterboxd.com/itsmeyouknow/">letterboxd</a>
+            <br></br>
+            <a href="https://rateyourmusic.com/~ANiceSandwich">rateyourmusic</a>
+            <br></br>
+          </div>
+        </p>
       </div>
 
       <div id="theCast"></div>

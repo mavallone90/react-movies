@@ -35,11 +35,12 @@ function App() {
         <h1
           style={{
             visibility: "hidden",
-            height: "10px",
+            height: "50px",
             marginLeft: "2%",
             marginTop: "0px",
             marginBottom: "0px",
             // position: "fixed",
+            // overflow: "hidden",
           }}
         >
           It's movie time!

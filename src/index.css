@@ -103,7 +103,11 @@ nav ul li {
 }
 
 .stuff {
-  padding-top: 100px;
+  padding-top: 50px;
+}
+
+.socials a:hover {
+  color: #b96a9f;
 }
 
 .aFilm {
