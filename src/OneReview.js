@@ -45,7 +45,7 @@ const OneReview = (prop) => {
                 name: rev.Name,
                 review: rev.Review,
                 rating10: rev.Rating * 20,
-                written: rev["Watched Date"],
+                written: rev["Watched Date"] ? rev["Watched Date"] : rev.Date,
                 lb_link: rev["Letterboxd URI"],
               });
               setLoading(false);
@@ -53,7 +53,7 @@ const OneReview = (prop) => {
             };
             (id ? id.toString() : 0) === pageID
               ? foundFilm()
-              : console.log("movies that are not the movie");
+              : console.log("reviews that are not of this movie");
           });
       };
       getIt();
@@ -65,8 +65,7 @@ const OneReview = (prop) => {
     if (document.getElementById("failed")) {
       document.getElementById("failed").innerHTML =
         "Lookin' like Mike didn't write one yet.";
-      document.getElementById("tweet").innerHTML =
-        "You can ask him to write one, @AManNamedMike";
+      document.getElementById("tweet").innerHTML = "You can ask @AManNamedMike";
     }
   }
   setTimeout(fail, 6000);

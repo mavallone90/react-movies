@@ -30,13 +30,22 @@ const Film = () => {
         </div>
 
         <p>
-          <span style={{ whiteSpace: "nowrap", fontSize: "25px" }}>
-            <span id="dex"></span>
+          <span
+            style={{
+              whiteSpace: "nowrap",
+              fontSize: "25px",
+              overflow: "hidden",
+              position: "relative",
+            }}
+          >
+            <span
+              id="dex"
+              style={{ position: "absolute", left: "-55px" }}
+            ></span>
             <a href={"/OneFilm/" + getRandomInt(50000)}> movie</a> reviews by
             mike
             <span style={{ opacity: "0.15" }}>avallone.com</span>
           </span>
-          <br></br>
           <br></br>
 
           <div className="socials">
