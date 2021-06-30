@@ -147,7 +147,7 @@ const ReviewsPlus = () => {
   }
   return (
     <div style={{ paddingLeft: "20px" }}>
-      <h2>Films That Are Great</h2>
+      <h2>Films That Are Truly Great</h2>
       <p>All the films I have rated a 9/10 or 10/10</p>
       <button type="submit" onClick={handleSubmit} id="loadBtn">
         Load Films

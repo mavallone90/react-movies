@@ -1,4 +1,5 @@
 import React from "react";
+import CountUp from "react-countup";
 // import { detailsRequest, creditsRequest } from "./consts";
 
 const Film = () => {
@@ -15,19 +16,14 @@ const Film = () => {
   }, []);
 
   function rewrite(i) {
-    document.getElementById("dex").innerHTML = i + 1;
+    return <CountUp start="50" end={i} duration="5" />;
   }
 
   return (
     <article className="aFilm">
       <div className="aPoster"></div>
       <div className="aReview">
-        <div className="reviewHead">
-          {review.results &&
-            review.results.map((rev, index) => {
-              return rewrite(index);
-            })}
-        </div>
+        <div className="reviewHead"></div>
 
         <p>
           <span
@@ -38,10 +34,17 @@ const Film = () => {
               position: "relative",
             }}
           >
-            <span
-              id="dex"
-              style={{ position: "absolute", left: "-55px" }}
-            ></span>
+            <span id="dex" style={{ position: "absolute", left: "-55px" }}>
+              {review.results &&
+                review.results.map((rev, index, arr) => {
+                  const rLen = arr.length - 1;
+                  if (index === rLen) {
+                    return rewrite(index + 1);
+                  } else {
+                    return [];
+                  }
+                })}
+            </span>
             <a href={"/OneFilm/" + getRandomInt(50000)}> movie</a> reviews by
             mike
             <span style={{ opacity: "0.15" }}>avallone.com</span>
