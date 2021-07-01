@@ -29,7 +29,7 @@ const Reviews = () => {
             <li key={rev["Letterboxd URI"]}>
               <a href={rev["Letterboxd URI"]}>
                 {rev.Name} ({rev.Year}){" "}
-                {rev.Rating ? "-" + rev.Rating * 2 + "/10" : ""}
+                {rev.Rating ? "- " + rev.Rating * 2 + "/10" : ""}
               </a>
             </li>
           ))}

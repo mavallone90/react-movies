@@ -29,12 +29,12 @@ const Film = () => {
           <span
             style={{
               whiteSpace: "nowrap",
-              fontSize: "25px",
+              fontSize: "30px",
               overflow: "hidden",
               position: "relative",
             }}
           >
-            <span id="dex" style={{ position: "absolute", left: "-55px" }}>
+            <span id="dex" style={{ position: "absolute", left: "-65px" }}>
               {review.results &&
                 review.results.map((rev, index, arr) => {
                   const rLen = arr.length - 1;
@@ -52,6 +52,14 @@ const Film = () => {
           <br></br>
 
           <div className="socials">
+            <br></br>
+            <a href="https://soundcloud.com/amannamedmike">music</a>
+            <br></br>
+            <a href="https://podcasts.apple.com/us/podcast/mike-meets-the-podcast/id1195752863">
+              podcast
+            </a>
+            <br></br>
+            <br></br>
             <a href="https://twitter.com/AManNamedMike">twitter</a> <br></br>
             <a href="https://www.instagram.com/amannamedmike/">instagram</a>
             <br></br>
