@@ -31,7 +31,6 @@ const Reviews = ({ run }) => {
 
   async function handleClick(search, year) {
     const movieTitle = encodeURIComponent(search && search);
-    console.log(movieTitle);
     const movieYear = year;
 
     const url = await Promise.resolve(await getID(movieTitle, movieYear));
