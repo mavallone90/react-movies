@@ -1,6 +1,7 @@
 import React from "react";
+import { tmdb_apikey } from "./consts";
 
-const Reviews = () => {
+const Reviews = ({ run }) => {
   const [review, setReview] = React.useState([]);
 
   React.useEffect(() => {
@@ -9,11 +10,37 @@ const Reviews = () => {
       .then((data) => setReview(data));
   }, []);
 
+  var getID = async function (movie, year) {
+    const idReq =
+      `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=` +
+      movie +
+      `&page=1&include_adult=false&year=` +
+      year +
+      `&primary_release_year=` +
+      year;
+
+    let filmID = fetch(idReq)
+      .then((response) => response.json())
+      .then((data) => data.results[0].id)
+      .catch(function (error) {
+        console.log("Broke");
+      });
+
+    return await filmID;
+  };
+
+  async function handleClick(search, year) {
+    const movieTitle = encodeURIComponent(search && search);
+    console.log(movieTitle);
+    const movieYear = year;
+
+    const url = await Promise.resolve(await getID(movieTitle, movieYear));
+    window.location = "/OneFilm/" + url;
+  }
+
   const linkBtn = {
     border: "1px solid black",
     padding: "0px 3px 0px 3px",
-    background: "#839896",
-
     color: "white",
   };
 
@@ -42,8 +69,8 @@ const Reviews = () => {
         display: "inline-block",
         textAlign: "center",
         width: "60px",
+        margin: "8px",
         background: y,
-        marginLeft: "10px",
       };
   };
 
@@ -66,18 +93,30 @@ const Reviews = () => {
           review.results.map((rev) => (
             <li key={rev["Letterboxd URI"]}>
               <span>
-                <span style={{ fontSize: "18px", padding: "10px" }}>
+                <span
+                  style={{
+                    fontSize: "18px",
+                    margin: "10px",
+                  }}
+                >
                   {rev.Name} ({rev.Year})
                 </span>
                 <br></br>
                 <a
                   href={rev["Letterboxd URI"]}
-                  className="navItem"
+                  className="linkButton"
                   style={linkBtn}
                 >
                   LB Link
                 </a>
-                <a href className="navItem" style={linkBtn}>
+                <a
+                  href
+                  className="linkButton"
+                  style={linkBtn}
+                  onClick={() => {
+                    handleClick(rev.Name, rev.Year);
+                  }}
+                >
                   Mike Link
                 </a>
                 <span style={ratingColor(rev.Rating)}>

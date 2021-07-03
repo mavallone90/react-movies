@@ -110,7 +110,7 @@ const OneFilm = () => {
             if (ppl.order < 10) {
               return (
                 <p key={ppl.id}>
-                  {ppl.name} as {ppl.character}
+                  {ppl.name} {ppl.character ? " as " + ppl.character : []}
                 </p>
               );
             } else {

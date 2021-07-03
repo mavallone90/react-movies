@@ -49,7 +49,7 @@ function App() {
       <div className="stuff">
         <Router>
           <Nav run={run} />
-          <Switch>
+          <Switch run={run}>
             <Route exact path="/">
               <Film />
             </Route>

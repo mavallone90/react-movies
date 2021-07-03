@@ -269,6 +269,16 @@ nav ul li {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
+.linkButton {
+  margin: 8px;
+  padding: 2px;
+  background-color: #839896;
+}
+
+.linkButton:hover {
+  background-color: #b96a9f;
+}
+
 @media only screen and (max-width: 800px) {
   body,
   nav {
