@@ -9,6 +9,44 @@ const Reviews = () => {
       .then((data) => setReview(data));
   }, []);
 
+  const linkBtn = {
+    border: "1px solid black",
+    padding: "0px 3px 0px 3px",
+    background: "#839896",
+
+    color: "white",
+  };
+
+  const ratingColor = (r) => {
+    var x;
+    var y = "#839896";
+
+    if (r < 2.5) {
+      x = "black";
+      y = "red";
+    }
+    if (r >= 2 && r <= 4) x = "#edeff0 ";
+    if (r > 4 && r <= 4.7) {
+      x = "white";
+      // y = "black";
+    }
+    if (r > 4.7) {
+      x = "gold";
+      y = "black";
+    }
+
+    if (r)
+      return {
+        color: x,
+        border: "1px solid black",
+        display: "inline-block",
+        textAlign: "center",
+        width: "60px",
+        background: y,
+        marginLeft: "10px",
+      };
+  };
+
   return (
     <div style={{ paddingLeft: "20px" }}>
       <a
@@ -27,10 +65,25 @@ const Reviews = () => {
         {review.results &&
           review.results.map((rev) => (
             <li key={rev["Letterboxd URI"]}>
-              <a href={rev["Letterboxd URI"]}>
-                {rev.Name} ({rev.Year}){" "}
-                {rev.Rating ? "- " + rev.Rating * 2 + "/10" : ""}
-              </a>
+              <span>
+                <span style={{ fontSize: "18px", padding: "10px" }}>
+                  {rev.Name} ({rev.Year})
+                </span>
+                <br></br>
+                <a
+                  href={rev["Letterboxd URI"]}
+                  className="navItem"
+                  style={linkBtn}
+                >
+                  LB Link
+                </a>
+                <a href className="navItem" style={linkBtn}>
+                  Mike Link
+                </a>
+                <span style={ratingColor(rev.Rating)}>
+                  {rev.Rating ? rev.Rating * 2 + "/10" : ""}
+                </span>
+              </span>
             </li>
           ))}
       </ol>
