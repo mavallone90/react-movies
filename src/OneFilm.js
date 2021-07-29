@@ -14,6 +14,7 @@ const OneFilm = () => {
   const [credit, setCredits] = React.useState([]);
   const centerHeight = React.useRef(null);
   const { currentID } = useParams();
+  const windowWidth = window.innerWidth;
 
   const detailsRequest = `https://api.themoviedb.org/3/movie/${currentID}?api_key=${tmdb_apikey}&language=en-US`;
   const creditsRequest = `https://api.themoviedb.org/3/movie/${currentID}/credits?api_key=${tmdb_apikey}&language=en-US`;
@@ -36,7 +37,18 @@ const OneFilm = () => {
       document.getElementById("theCast").style.paddingTop =
         desiredHeight + "px";
     }
+
+    if (windowWidth < 800) {
+      let x = windowWidth * 0.85;
+      let y = x * 1.5;
+      document.getElementById("paraID").style.marginTop = y + 25 + "px";
+      document.getElementById("paraID").style.width = x + "px";
+      console.log(x, y);
+    } else {
+      console.log("desktop");
+    }
   });
+
   // PROBLEM! Need to know how to get the last value and stop
   // Right now it will fix the height disparity after a refresh
   // I suspect this is inefficient.  I could probably fix the refresh issue,
@@ -98,7 +110,7 @@ const OneFilm = () => {
               })}
           </div>
         </div>
-        <div className="someParagraphs">
+        <div className="someParagraphs" id="paraID">
           <OneReview id={currentID} />
         </div>
       </div>

@@ -302,11 +302,20 @@ nav ul li {
   }
   #tagline {
     visibility: collapse;
+    height: 0;
   }
 
   .released {
     visibility: collapse;
     height: 0;
+  }
+
+  .reviewHead h2 {
+    font-size: 6vw;
+  }
+
+  .reviewHead .theDirector {
+    font-size: 5vw;
   }
 
   /* the poster itself */
@@ -315,19 +324,24 @@ nav ul li {
   }
 
   .someParagraphs {
-    visibility: collapse;
+    /* visibility: collapse; */
+    /* margin-top: 530px; */
+    font-size: 3.8vw;
+    width: 350px;
   }
 
   /* the title of the film */
   .aReview {
     grid-column: 2;
     position: absolute;
+    width: 100%;
   }
 
   #theCast {
     grid-column: 2;
     padding-top: 100px;
     text-align: center;
+    visibility: collapse;
   }
 
   /* ~~~~~~ Multiple films page ~~~~~~~~~~~ */
