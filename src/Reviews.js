@@ -41,6 +41,7 @@ const Reviews = ({ run }) => {
     border: "1px solid black",
     padding: "0px 3px 0px 3px",
     color: "white",
+    cursor: "pointer",
   };
 
   const ratingColor = (r) => {
@@ -52,11 +53,11 @@ const Reviews = ({ run }) => {
       y = "red";
     }
     if (r >= 2 && r <= 4) x = "#edeff0 ";
-    if (r > 4 && r <= 4.7) {
+    if (r > 4 && r <= 4.48) {
       x = "white";
       // y = "black";
     }
-    if (r > 4.7) {
+    if (r > 4.48) {
       x = "gold";
       y = "black";
     }
@@ -75,7 +76,7 @@ const Reviews = ({ run }) => {
 
   return (
     <div style={{ paddingLeft: "20px" }}>
-      <a
+      {/* <a
         href="/ReviewsPlus"
         className="navItem"
         style={{
@@ -85,7 +86,7 @@ const Reviews = ({ run }) => {
         }}
       >
         Reviews+
-      </a>
+      </a> */}
       <h2>Every Motion Pictuce I've Reviewed:</h2>
       <ol>
         {review.results &&

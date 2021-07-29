@@ -22,6 +22,24 @@ const Nav = ({ run }) => {
     borderBottom: "1px solid",
   };
 
+  React.useEffect(() => {
+    if (window.innerWidth < 800) {
+      console.log("mobile");
+      document.getElementById("n1").style.visibility = "hidden";
+      document.getElementById("n1").style.width = "0";
+      document.getElementById("n2").innerHTML = "Greats";
+      document.getElementById("n3").style.visibility = "hidden";
+      document.getElementById("n3").style.width = "0px";
+      document.getElementById("n4").style.visibility = "hidden";
+      document.getElementById("n4").style.width = "0px";
+      document.getElementById("searchThing").style.width = "90%";
+      // document.getElementById("searchaThing").innerText = "Search";
+    } else {
+      console.log("desktop");
+      document.getElementById("n5").innerText = "Mike";
+    }
+  });
+
   return (
     <nav>
       <ul>
@@ -33,13 +51,18 @@ const Nav = ({ run }) => {
             Home
           </NavLink>
         </li> */}
-        <li>
+        <li id="n1">
           <NavLink to="/Reviews" className="navItem" activeStyle={onThisLink}>
             Reviews
           </NavLink>
         </li>
         <li>
-          <NavLink to="/Great" className="navItem" activeStyle={onThisLink}>
+          <NavLink
+            to="/Great"
+            id="n2"
+            className="navItem"
+            activeStyle={onThisLink}
+          >
             Great Films
           </NavLink>
         </li>
@@ -49,7 +72,7 @@ const Nav = ({ run }) => {
             id="searchThing"
             type="text"
             minLength="1"
-            placeholder=" Search / Press Enter"
+            placeholder="Search / Press Enter"
             value={search}
             onKeyDown={test}
             onChange={(e) => setSearch(e.target.value)}
@@ -57,12 +80,35 @@ const Nav = ({ run }) => {
           {/* <input type="submit" id="submitThing" onClick={handleSubmit} /> */}
         </li>
         <li>
-          <NavLink to="/Current" className="navItem" activeStyle={onThisLink}>
+          <NavLink
+            exact
+            to="/"
+            id="n5"
+            className="navItem"
+            style={{ float: "left" }}
+            activeStyle={onThisLink}
+            s
+          >
+            Home
+          </NavLink>
+        </li>
+        <li id="n3">
+          <NavLink
+            to="/Current"
+            id="n3"
+            className="navItem"
+            activeStyle={onThisLink}
+          >
             Current Movies
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/Upcoming" className="navItem" activeStyle={onThisLink}>
+        <li id="n4">
+          <NavLink
+            to="/Upcoming"
+            id="n4"
+            className="navItem"
+            activeStyle={onThisLink}
+          >
             Upcoming Flicks
           </NavLink>
         </li>

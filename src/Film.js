@@ -19,6 +19,13 @@ const Film = () => {
     return <CountUp start="50" end={i} duration="5" />;
   }
 
+  React.useEffect(() => {
+    if (window.innerWidth < 800) {
+      console.log("OK");
+      document.getElementById("headline").innerText = "reviews by Mike";
+    }
+  });
+
   return (
     <article className="aFilm">
       <div className="aPoster"></div>
@@ -27,6 +34,7 @@ const Film = () => {
 
         <p>
           <span
+            id="headline"
             style={{
               whiteSpace: "nowrap",
               fontSize: "30px",

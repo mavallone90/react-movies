@@ -285,10 +285,10 @@ nav ul li {
     background-color: whitesmoke;
   }
 
-  .navItem {
+  /* .navItem {
     visibility: hidden;
     width: 0;
-  }
+  } */
 
   .aFilm {
     display: grid;
