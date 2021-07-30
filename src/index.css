@@ -240,7 +240,7 @@ nav ul li {
 }
 
 .comingAttractions h3 {
-  height: 100px;
+  height: 75px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -349,6 +349,11 @@ nav ul li {
   .comingAttractions {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .comingAttractions h3 {
+    height: min-content;
+    margin-top: 50px;
   }
 }
 
