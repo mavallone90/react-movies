@@ -79,7 +79,7 @@ nav ul li {
 }
 
 #searchThing {
-  opacity: 75%;
+  opacity: 0.75;
   padding: 8px;
   width: 155px;
   font-size: 16px;
@@ -92,7 +92,7 @@ nav ul li {
 }
 #searchThing:focus {
   outline: 0;
-  opacity: 100%;
+  opacity: 1;
   width: 240px;
   background-color: white;
   color: black;
@@ -106,6 +106,18 @@ nav ul li {
   padding-top: 50px;
 }
 
+.socials {
+  opacity: 0.5;
+}
+
+.socials:hover {
+  color: #b96a9f;
+  opacity: 1;
+}
+
+.socials a {
+  opacity: 1;
+}
 .socials a:hover {
   color: #b96a9f;
 }
@@ -122,7 +134,7 @@ nav ul li {
   text-align: center;
   color: #132c33;
   font-size: 90%;
-  opacity: 100%;
+  opacity: 1;
 }
 
 /* the tagline */
@@ -147,7 +159,7 @@ nav ul li {
   height: 100px;
   /* text-shadow: 2px 2px #c2c2c2; */
   color: #132c33;
-  opacity: 85%;
+  opacity: 0.85;
 }
 
 /* this is the revenue  */
@@ -175,7 +187,7 @@ nav ul li {
 .engTitle {
   margin: 0;
   color: #126e82;
-  opacity: 68%;
+  opacity: 0.68;
   font-size: 16px;
   font-style: italic;
 }

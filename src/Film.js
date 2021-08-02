@@ -3,6 +3,8 @@ import CountUp from "react-countup";
 // import { detailsRequest, creditsRequest } from "./consts";
 
 const Film = () => {
+  const w = window.innerWidth;
+
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
@@ -20,17 +22,37 @@ const Film = () => {
   }
 
   React.useEffect(() => {
-    if (window.innerWidth < 800) {
+    if (w < 800) {
       console.log("OK");
-      document.getElementById("headline").innerText = "reviews by Mike";
+      document.getElementById("numberlessHeadline").innerText =
+        "reviews by Mike";
+      document.getElementById("dex").style.position = "relative";
+      document.getElementById("dex").style.left = "0px";
+      document.getElementById("dex").style.marginRight = "8px";
     }
   });
+
+  const numSty = {
+    position: "absolute",
+    left: "-65px",
+  };
+
+  // const numSty = (w) => {
+  //   if (w > 800)
+  //     return {
+  //       position: "absolute",
+  //       left: "-65px",
+  //     };
+  //   else return {};
+  // };
 
   return (
     <article className="aFilm">
       <div className="aPoster"></div>
       <div className="aReview">
-        <div className="reviewHead"></div>
+        <div className="reviewHead" style={{ opacity: "0.75" }}>
+          {window.innerWidth < 800 ? "↑ read ↑" : ""}
+        </div>
 
         <p>
           <span
@@ -42,7 +64,7 @@ const Film = () => {
               position: "relative",
             }}
           >
-            <span id="dex" style={{ position: "absolute", left: "-65px" }}>
+            <span id="dex" style={numSty}>
               {review.results &&
                 review.results.map((rev, index, arr) => {
                   const rLen = arr.length - 1;
@@ -53,14 +75,18 @@ const Film = () => {
                   }
                 })}
             </span>
-            <a href={"/OneFilm/" + getRandomInt(50000)}> movie</a> reviews by
-            mike
-            <span style={{ opacity: "0.15" }}>avallone.com</span>
+            <span href id="numberlessHeadline">
+              <a href={"/OneFilm/" + getRandomInt(50000)}> movie</a> reviews by
+              mike <span style={{ opacity: "0.15" }}>avallone.com</span>
+            </span>
           </span>
           <br></br>
-
-          <div className="socials">
-            <br></br>
+          {/* <span>reviews of all movies </span>
+          <br></br>
+          <span>reviews of great movies </span> */}
+          <details className="socials">
+            <summary>also music, podcast and socials</summary>
+            {/* <div style={{ height: "5px" }}></div> */}
             <a href="https://soundcloud.com/amannamedmike">music</a>
             <br></br>
             <a href="https://podcasts.apple.com/us/podcast/mike-meets-the-podcast/id1195752863">
@@ -76,7 +102,7 @@ const Film = () => {
             <br></br>
             <a href="https://rateyourmusic.com/~ANiceSandwich">rateyourmusic</a>
             <br></br>
-          </div>
+          </details>
         </p>
       </div>
 

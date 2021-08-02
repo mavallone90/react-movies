@@ -30,8 +30,24 @@ const Films = () => {
     fetchFilmsData(great_films);
   }, []);
 
+  const arrowsNeeded = {
+    marginTop: "50px",
+    textAlign: "center",
+    // opacity: "0.7",
+    fontSize: 14,
+  };
+
+  const arrow = (
+    <div style={arrowsNeeded}>
+      {" "}
+      <p>9+/10 Films</p>
+      <span>⇣ Scroll ⇣</span>
+    </div>
+  );
+
   return (
     <div className="comingAttractions">
+      {window.innerWidth < 800 ? arrow : ""}
       {films.map((film) => {
         return (
           <Link to={`OneFilm/${film.id}`} key={film.id}>

@@ -32,7 +32,7 @@ const Nav = ({ run }) => {
       document.getElementById("n3").style.width = "0px";
       document.getElementById("n4").style.visibility = "hidden";
       document.getElementById("n4").style.width = "0px";
-      document.getElementById("searchThing").style.width = "75%";
+      document.getElementById("searchThing").style.width = "85%";
       // document.getElementById("searchaThing").innerText = "Search";
     } else {
       console.log("desktop");
