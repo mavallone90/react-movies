@@ -44,6 +44,16 @@ const Reviews = ({ run }) => {
     cursor: "pointer",
   };
 
+  const linkBtnLB = {
+    // border: "1px solid black",
+    padding: "0px 3px 0px 3px",
+    color: "white",
+
+    fontSize: 16,
+    cursor: "pointer",
+    opacity: "0.7",
+  };
+
   const ratingColor = (r) => {
     var x;
     var y = "#839896";
@@ -87,7 +97,8 @@ const Reviews = ({ run }) => {
       >
         Reviews+
       </a> */}
-      <h2>Every Motion Pictuce I've Reviewed:</h2>
+      <h2>Every Motion Picture I've Reviewed:</h2>
+      <i>links to letterboxd.com and links within my own site</i>
       <ol>
         {review.results &&
           review.results.map((rev) => (
@@ -102,13 +113,10 @@ const Reviews = ({ run }) => {
                   {rev.Name} ({rev.Year})
                 </span>
                 <br></br>
-                <a
-                  href={rev["Letterboxd URI"]}
-                  className="linkButton"
-                  style={linkBtn}
-                >
-                  LB Link
-                </a>
+
+                <span style={ratingColor(rev.Rating)}>
+                  {rev.Rating ? rev.Rating * 2 + "/10" : ""}
+                </span>
                 <a
                   href
                   className="linkButton"
@@ -117,11 +125,15 @@ const Reviews = ({ run }) => {
                     handleClick(rev.Name, rev.Year);
                   }}
                 >
-                  Mike Link
+                  Read Review
                 </a>
-                <span style={ratingColor(rev.Rating)}>
-                  {rev.Rating ? rev.Rating * 2 + "/10" : ""}
-                </span>
+                <a
+                  href={rev["Letterboxd URI"]}
+                  className="linkButton"
+                  style={linkBtnLB}
+                >
+                  LB Link
+                </a>
               </span>
             </li>
           ))}

@@ -125,7 +125,7 @@ nav ul li {
 .aFilm {
   display: grid;
   grid-template-columns: 30.5% 2% 35% 2% 30.5%;
-  min-height: 700px;
+  min-height: 800px;
   padding-bottom: 25px;
 }
 

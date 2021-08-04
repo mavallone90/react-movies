@@ -63,6 +63,18 @@ function App() {
           </Switch>
         </Router>
       </div>
+      <footer>
+        <span style={{ margin: "2px", float: "left" }}>
+          Built By Mike, 2021
+        </span>
+        <a
+          href="https://forms.gle/vy51wJ6DbNURjDSLA"
+          style={{ margin: "2px", float: "right" }}
+          className="navItem"
+        >
+          Report Bug
+        </a>
+      </footer>
     </main>
   );
 }
