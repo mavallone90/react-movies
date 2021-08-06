@@ -20,6 +20,10 @@ const OneFilm = () => {
   const creditsRequest = `https://api.themoviedb.org/3/movie/${currentID}/credits?api_key=${tmdb_apikey}&language=en-US`;
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  React.useEffect(() => {
     fetch(detailsRequest)
       .then((da_response) => da_response.json())
       .then((dat_json) => setFilm(dat_json));

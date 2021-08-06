@@ -84,6 +84,14 @@ const Reviews = ({ run }) => {
       };
   };
 
+  // function scrollBottom() {
+  //   window.scroll({
+  //     top: document.body.offsetHeight,
+  //     left: 0,
+  //     behavior: "smooth",
+  //   });
+  // }
+
   return (
     <div style={{ paddingLeft: "20px" }}>
       {/* <a
@@ -98,7 +106,11 @@ const Reviews = ({ run }) => {
         Reviews+
       </a> */}
       <h2>Every Motion Picture I've Reviewed:</h2>
-      <i>links to letterboxd.com and links within my own site</i>
+      <i>links within my own site and links to letterboxd.com</i>
+      <br></br>
+      {/* <a href className="navItem" aonClick={scrollBottom}>
+        <u>scroll to bottom</u>
+      </a> */}
       <ol>
         {review.results &&
           review.results.map((rev) => (
@@ -131,8 +143,10 @@ const Reviews = ({ run }) => {
                   href={rev["Letterboxd URI"]}
                   className="linkButton"
                   style={linkBtnLB}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  LB Link
+                  LB
                 </a>
               </span>
             </li>

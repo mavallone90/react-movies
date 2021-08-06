@@ -40,8 +40,8 @@ const Films = () => {
   const arrow = (
     <div style={arrowsNeeded}>
       {" "}
-      <p>9+/10 Films</p>
-      <span>⇣ Scroll ⇣</span>
+      <p>films I call great</p>
+      <span>⇣ scroll ⇣</span>
     </div>
   );
 

@@ -87,6 +87,8 @@ const OneReview = (prop) => {
           href="https://twitter.com/AManNamedMike"
           id="tweet"
           style={{ textDecoration: "underline" }}
+          target="_blank"
+          rel="noreferrer"
         >
           {""}
         </a>
@@ -113,8 +115,13 @@ const OneReview = (prop) => {
                 ) : (
                   ""
                 )}
-                <a href={r.lb_link} className="lb_lnk">
-                  LB Link
+                <a
+                  href={r.lb_link}
+                  className="lb_lnk"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LB
                 </a>
               </div>
             </article>

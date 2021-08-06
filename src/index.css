@@ -102,6 +102,10 @@ nav ul li {
   border: 1px solid rgba(0, 0, 0, 0.69);
 }
 
+#submitThing {
+  font-size: 120%;
+}
+
 .stuff {
   padding-top: 50px;
 }
@@ -188,7 +192,7 @@ nav ul li {
   margin: 0;
   color: #126e82;
   opacity: 0.68;
-  font-size: 16px;
+  font-size: 1.5vw;
   font-style: italic;
 }
 
@@ -302,6 +306,19 @@ nav ul li {
     width: 0;
   } */
 
+  .mobileSearch {
+    display: grid;
+    grid-template-columns: 75% 5% 20%;
+  }
+
+  #searchThing {
+    grid-column: 1;
+  }
+
+  #submitThing {
+    grid-column: 3;
+  }
+
   .aFilm {
     display: grid;
     grid-template-columns: 7.5% 85% 7.5%;
@@ -328,6 +345,10 @@ nav ul li {
 
   .reviewHead .theDirector {
     font-size: 5vw;
+  }
+
+  .engTitle {
+    font-size: 4vw;
   }
 
   /* the poster itself */

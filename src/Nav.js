@@ -22,21 +22,33 @@ const Nav = ({ run }) => {
     borderBottom: "1px solid",
   };
 
+  function removeElement(id) {
+    if (id) {
+      var elem = document.getElementById(id);
+      return elem ? elem.remove() : "";
+    }
+  }
+
   React.useEffect(() => {
     if (window.innerWidth < 800) {
       console.log("mobile");
       // document.getElementById("n1").style.visibility = "hidden";
       document.getElementById("n1").innerHTML = "All";
       document.getElementById("n2").innerHTML = "Greats";
-      document.getElementById("n3").style.visibility = "hidden";
-      document.getElementById("n3").style.width = "0px";
+      // document.getElementById("n3").style.visibility = "hidden";
+      // document.getElementById("n3").style.width = "0px";
       document.getElementById("n4").style.visibility = "hidden";
       document.getElementById("n4").style.width = "0px";
-      document.getElementById("searchThing").style.width = "85%";
-      // document.getElementById("searchaThing").innerText = "Search";
+      document.getElementById("searchThing").style.width = "90%";
+      document.getElementById("submitThing").style.width = "100%";
+      document.getElementById("searchThing").placeholder = "Film Title";
+      removeElement("n3");
+      // removeElement("n4");
+      // document.getElementById("searc haThing").innerText = "Search";
     } else {
       console.log("desktop");
       document.getElementById("n5").innerText = "Mike";
+      removeElement("submitThing");
     }
   });
 
@@ -73,16 +85,23 @@ const Nav = ({ run }) => {
         </li>
         <li>
           <div id="nada"></div>
-          <input
-            id="searchThing"
-            type="text"
-            minLength="1"
-            placeholder="Search / Enter"
-            value={search}
-            onKeyDown={test}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          {/* <input type="submit" id="submitThing" onClick={handleSubmit} /> */}
+          <span className="mobileSearch">
+            <input
+              id="searchThing"
+              type="text"
+              minLength="1"
+              placeholder="Search / Enter"
+              value={search}
+              onKeyDown={test}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <input
+              type="submit"
+              id="submitThing"
+              onClick={handleSubmit}
+              value="⌲"
+            />
+          </span>
         </li>
         <li>
           <NavLink
