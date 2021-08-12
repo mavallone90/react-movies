@@ -1,6 +1,8 @@
 import React from "react";
 import nl2br from "react-nl2br";
-import { tmdb_apikey, formateDate } from "./consts";
+import { formateDate } from "./consts";
+import { tmdb_apikey } from "./key";
+
 // import { useParams } from "react-router-dom";
 
 const OneReview = (prop) => {

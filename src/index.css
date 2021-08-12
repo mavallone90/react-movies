@@ -247,6 +247,13 @@ nav ul li {
   color: #b96a9f;
 }
 
+.allList {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/* Upcoming section: */
+
 .comingAttractions {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

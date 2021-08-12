@@ -1,5 +1,7 @@
 import React from "react";
-import { tmdb_apikey, small_IMAGE_URL, noDec } from "./consts";
+import { small_IMAGE_URL, noDec } from "./consts";
+import { tmdb_apikey } from "./key";
+
 import { Link } from "react-router-dom";
 
 const Current = () => {

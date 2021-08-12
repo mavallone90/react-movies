@@ -1,11 +1,7 @@
 import React from "react";
-import {
-  formateDate,
-  justYear,
-  IMAGE_URL,
-  numberWithCommas,
-  tmdb_apikey,
-} from "./consts";
+import { formateDate, justYear, IMAGE_URL, numberWithCommas } from "./consts";
+import { tmdb_apikey } from "./key";
+
 import { useParams } from "react-router-dom";
 import OneReview from "./OneReview";
 

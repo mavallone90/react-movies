@@ -8,7 +8,7 @@ import OneFilm from "./OneFilm";
 // import OneReview from "./OneReview";
 import Reviews from "./Reviews";
 import ReviewsPlus from "./ReviewsPlus";
-import { tmdb_apikey } from "./consts";
+import { tmdb_apikey } from "./key";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {

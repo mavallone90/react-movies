@@ -1,8 +1,10 @@
 // export const root = document.querySelector(".site-wrap");
 // const feed = "https://letterboxd.com/itsmeyouknow/rss/";
-export const tmdb_apikey = "a735bdf539e3961056f00ec379922d26";
+export const tmdb_apikey_0 = "nothing";
 export const IMAGE_URL = "https://image.tmdb.org/t/p/original";
 export const small_IMAGE_URL = "https://image.tmdb.org/t/p/w500";
+
+console.log("key.txt");
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -43,8 +45,8 @@ export const my_films = [
 ];
 
 export const great_films = [
-  11, 15, 28, 38, 62, 76, 78, 85, 103, 105, 107, 111, 115, 120, 121, 122, 129,
-  141, 149, 194, 238, 274, 279, 284, 289, 311, 334, 335, 396, 426, 429, 489,
+  11, 15, 28, 38, 62, 76, 78, 85, 103, 105, 107, 115, 120, 121, 122, 129, 141,
+  149, 194, 238, 274, 279, 284, 289, 311, 111, 334, 335, 396, 426, 429, 489,
   492, 496, 548, 583, 598, 603, 638, 665, 680, 813, 828, 843, 851, 872, 895,
   922, 925, 935, 947, 961, 976, 990, 1018, 1398, 1883, 1891, 1892, 776527,
   // 2323, Dreams (1990) should be 12516
@@ -64,21 +66,21 @@ export const great_films = [
   491584, 467909, 473033, 496243,
   // 499778, Twin Peaks: The Return
   503919,
-  // 517104, Cold War (2017)
+  // 517104, Cold War (2017) poop
   440298, 530915, 549559, 556574, 791373,
 ];
 
 export const currentID = my_films[getRandomInt(29)];
 
 //search for movie:
-export const searchTitle = encodeURIComponent("Fear and Loathing in Las Vegas"); // FIXED - Need spaces to be accepted
-export const searchYear = "1998";
-export const movieRequest = `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=${searchTitle}&page=1&include_adult=false&year=${searchYear}&primary_release_year=${searchYear}`;
+// export const searchTitle = encodeURIComponent("Fear and Loathing in Las Vegas"); // FIXED - Need spaces to be accepted
+// export const searchYear = "1998";
+// export const movieRequest = `https://api.themoviedb.org/3/search/movie?api_key=${tmdb_apikey}&language=en-US&query=${searchTitle}&page=1&include_adult=false&year=${searchYear}&primary_release_year=${searchYear}`;
 
-// requests for movie details, 20 most popular and credits
-export const detailsRequest = `https://api.themoviedb.org/3/movie/${currentID}?api_key=${tmdb_apikey}&language=en-US`;
-export const popularRequest = `https://api.themoviedb.org/3/movie/popular?api_key=${tmdb_apikey}&language=en-US&page=1`;
-export const creditsRequest = `https://api.themoviedb.org/3/movie/${currentID}/credits?api_key=${tmdb_apikey}&language=en-US`;
+// // requests for movie details, 20 most popular and credits
+// export const detailsRequest = `https://api.themoviedb.org/3/movie/${currentID}?api_key=${tmdb_apikey}&language=en-US`;
+// export const popularRequest = `https://api.themoviedb.org/3/movie/popular?api_key=${tmdb_apikey}&language=en-US&page=1`;
+// export const creditsRequest = `https://api.themoviedb.org/3/movie/${currentID}/credits?api_key=${tmdb_apikey}&language=en-US`;
 
 //Formate date functions:
 export var formateDate = function (timestamp) {

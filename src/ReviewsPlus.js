@@ -1,5 +1,5 @@
 import React from "react";
-import { tmdb_apikey } from "./consts";
+import { tmdb_apikey } from "./key";
 import nl2br from "react-nl2br";
 
 const ReviewsPlus = () => {

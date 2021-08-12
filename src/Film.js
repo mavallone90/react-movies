@@ -79,8 +79,14 @@ const Film = () => {
                   })}
               </span>
               <span href id="numberlessHeadline">
-                <a href={"/OneFilm/" + getRandomInt(50000)}> movie</a> reviews
-                by Mike <span style={{ opacity: "0.15" }}>avallone.com</span>
+                <a
+                  href={"/OneFilm/" + getRandomInt(50000)}
+                  style={{ cursor: "text" }}
+                >
+                  movie
+                </a>{" "}
+                reviews by mike{" "}
+                <span style={{ opacity: "0.15" }}>avallone.com</span>
               </span>
             </span>
             <br></br>
@@ -97,7 +103,9 @@ const Film = () => {
               click the links or search at the top for movies
             </span>
             <details className="socials">
-              <summary>also music, podcast and socials</summary>
+              <summary style={{ cursor: "pointer" }}>
+                also music, podcast and socials
+              </summary>
               {/* <div style={{ height: "5px" }}></div> */}
 
               <div style={{ paddingLeft: "50px" }}>

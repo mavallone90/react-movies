@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
-  tmdb_apikey,
+  // tmdb_apikey,
   // my_films,
   great_films,
   justYear,
   small_IMAGE_URL,
 } from "./consts";
+import { tmdb_apikey } from "./key";
 import { Link } from "react-router-dom";
 
 const Films = () => {

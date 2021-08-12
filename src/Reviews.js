@@ -1,5 +1,5 @@
 import React from "react";
-import { tmdb_apikey } from "./consts";
+import { tmdb_apikey } from "./key";
 
 const Reviews = ({ run }) => {
   const [review, setReview] = React.useState([]);
@@ -34,7 +34,9 @@ const Reviews = ({ run }) => {
     const movieYear = year;
 
     const url = await Promise.resolve(await getID(movieTitle, movieYear));
-    window.location = "/OneFilm/" + url;
+    url
+      ? (window.location = "/OneFilm/" + url)
+      : (window.location = "/OneFilm/638626");
   }
 
   const linkBtn = {
@@ -111,7 +113,7 @@ const Reviews = ({ run }) => {
       {/* <a href className="navItem" aonClick={scrollBottom}>
         <u>scroll to bottom</u>
       </a> */}
-      <ol>
+      <ol className="allList">
         {review.results &&
           review.results.map((rev) => (
             <li key={rev["Letterboxd URI"]}>
@@ -127,7 +129,7 @@ const Reviews = ({ run }) => {
                 <br></br>
 
                 <span style={ratingColor(rev.Rating)}>
-                  {rev.Rating ? rev.Rating * 2 + "/10" : ""}
+                  {rev.Rating ? rev.Rating * 20 + "/100" : ""}
                 </span>
                 <a
                   href
