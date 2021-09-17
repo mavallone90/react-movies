@@ -53,12 +53,15 @@ function App() {
             <Route exact path="/">
               <Film />
             </Route>
-            <Route exact path="/Great" component={Films} />
-            <Route exact path="/ReviewsPlus" component={ReviewsPlus} />
-            <Route exact path="/Reviews" component={Reviews} />
-            <Route exact path="/Upcoming" component={Upcoming} />
-            <Route exact path="/Current" component={Current} />
-            <Route path="/OneFilm/:currentID" component={OneFilm} />
+            <Route path="/Great" exact component={Films} />
+            <Route path="/ReviewsPlus" exact component={ReviewsPlus} />
+            <Route path="/Reviews" exact component={Reviews} />
+            <Route path="/Upcoming" component={Upcoming} />
+            <Route path="/Current" exact component={Current} />
+            <Route path="/OneFilm/:currentID" exact component={OneFilm} />
+            <Route path="*">
+              <h1 style={{ textAlign: "center" }}>an error</h1>
+            </Route>
             {/* <Route path="/OneReview/:reviewID" component={OneReview} /> */}
           </Switch>
         </Router>
