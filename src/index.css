@@ -235,16 +235,18 @@ nav ul li {
   grid-column: 5;
   padding-top: 100px;
   color: #132c33;
+  /* color: #126e82; */
   padding-right: 5px;
 }
 
 #theCast p {
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 }
 
 #theCast p:nth-child(2) {
-  color: #b96a9f;
+  /* color: #b96a9f; */
+  font-size: 120%;
 }
 
 .allList {

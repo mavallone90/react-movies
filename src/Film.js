@@ -18,12 +18,11 @@ const Film = () => {
   }, []);
 
   function rewrite(i) {
-    return <CountUp start="50" end={i} duration="5" />;
+    return <CountUp start="50" end={i} duration="3.5" />;
   }
 
   React.useEffect(() => {
     if (w < 800) {
-      console.log("OK");
       document.getElementById("numberlessHeadline").innerText =
         "reviews by Mike";
       document.getElementById("moviesInfo").innerText =
@@ -34,9 +33,21 @@ const Film = () => {
     }
   });
 
+  React.useEffect(() => {
+    if (w >= 800 && w < 1300) {
+      document.getElementById("wholething").style.zoom = "108%";
+    }
+  });
+
+  React.useEffect(() => {
+    if (w >= 1300) {
+      document.getElementById("wholething").style.zoom = "140%";
+    }
+  });
+
   const numSty = {
     position: "absolute",
-    left: "-65px",
+    left: "-75px",
   };
 
   // const numSty = (w) => {
@@ -52,7 +63,7 @@ const Film = () => {
     <>
       <article className="aFilm">
         <div className="aPoster"></div>
-        <div className="aReview">
+        <div className="aReview" id="wholething">
           <div className="reviewHead" style={{ opacity: "0.75" }}>
             {window.innerWidth < 800 ? "↑ click ↑" : ""}
           </div>
@@ -178,9 +189,14 @@ const Film = () => {
         <div id="theCast"></div>
       </article>
       <footer>
-        <span style={{ margin: "2px", float: "left" }}>
+        <a
+          style={{ margin: "2px", float: "left" }}
+          href="https://github.com/mavallone90/react-movies"
+          target="_blank"
+          rel="noreferrer"
+        >
           Built By Mike, 2021
-        </span>
+        </a>
         <a
           href="https://forms.gle/vy51wJ6DbNURjDSLA"
           style={{ margin: "2px", float: "right" }}
