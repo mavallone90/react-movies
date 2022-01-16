@@ -5,6 +5,7 @@ import {
   great_films,
   justYear,
   small_IMAGE_URL,
+  shuffle,
 } from "./consts";
 import { tmdb_apikey } from "./key";
 import { Link } from "react-router-dom";
@@ -28,7 +29,7 @@ const Films = () => {
       setFilms(filmsData);
     };
 
-    fetchFilmsData(great_films);
+    fetchFilmsData(shuffle(great_films));
   }, []);
 
   const arrowsNeeded = {

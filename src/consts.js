@@ -10,6 +10,25 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+export function shuffle(array) {
+  var m = array.length,
+    t,
+    i;
+
+  // While there remain elements to shuffle…
+  while (m) {
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
+
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+
+  return array;
+}
+
 // ID and movies to test with
 export const my_films = [
   "935",
@@ -63,11 +82,12 @@ export const great_films = [
   // 440202, Tim - The Trial
   450875, 458723, 466272,
   // 467240, Burning (2018) - should be 491584
-  491584, 467909, 473033, 496243,
+  491584, 467909, 473033, 496243, 660120,
   // 499778, Twin Peaks: The Return
   503919,
   // 517104, Cold War (2017) poop
-  440298, 530915, 549559, 556574, 791373,
+  440298, 530915, 549559, 556574, 791373, 591538, 949, 718032, 489412, 542178,
+  827, 21484,
 ];
 
 export const currentID = my_films[getRandomInt(29)];
