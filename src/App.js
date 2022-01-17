@@ -56,7 +56,7 @@ function App() {
             <Route path="/Great" exact component={Films} />
             <Route path="/ReviewsPlus" exact component={ReviewsPlus} />
             <Route path="/Reviews" exact component={Reviews} />
-            <Route path="/Upcoming" component={Upcoming} />
+            <Route path="/film/Upcoming" component={Upcoming} />
             <Route path="/Current" exact component={Current} />
             <Route path="/OneFilm/:currentID" exact component={OneFilm} />
             <Route path="*">

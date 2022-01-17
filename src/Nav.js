@@ -128,7 +128,7 @@ const Nav = ({ run }) => {
         </li>
         <li id="n4">
           <NavLink
-            to="/Upcoming"
+            to="/film/Upcoming"
             id="n4"
             className="navItem"
             activeStyle={onThisLink}

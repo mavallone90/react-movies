@@ -9,6 +9,8 @@ const OneFilm = () => {
   const [film, setFilm] = React.useState([]);
   const [credit, setCredits] = React.useState([]);
   const centerHeight = React.useRef(null);
+  const titleHeight = React.useRef(null);
+  const dirHeight = React.useRef(null);
   const { currentID } = useParams();
   const windowWidth = window.innerWidth;
 
@@ -31,11 +33,17 @@ const OneFilm = () => {
 
   React.useEffect(() => {
     let desiredHeight = centerHeight.current.offsetHeight;
+    let theTitleHeight = titleHeight.current.offsetHeight;
+    let theDirHeight = dirHeight.current.offsetHeight;
+    let realHeight = theDirHeight + theTitleHeight;
     if (desiredHeight > 100) {
-      // console.log(desiredHeight);
       document.getElementById("tagline").style.height = desiredHeight + "px";
       document.getElementById("theCast").style.paddingTop =
         desiredHeight + "px";
+    } else {
+      console.log(desiredHeight + " Total Short");
+      console.log(realHeight + " Real Height");
+      // document.getElementById("rh").style.height = "10px";
     }
 
     if (windowWidth < 800) {
@@ -87,8 +95,8 @@ const OneFilm = () => {
       </div>
 
       <div className="aReview">
-        <div className="reviewHead" ref={centerHeight}>
-          <h2>
+        <div className="reviewHead" ref={centerHeight} id="rh">
+          <h2 ref={titleHeight}>
             {film.title === film.original_title ? (
               `${film.original_title} (${justYear(film.release_date)})`
             ) : (
@@ -98,7 +106,7 @@ const OneFilm = () => {
               </>
             )}
           </h2>
-          <div className="theDirector">
+          <div className="theDirector" ref={dirHeight}>
             Directed by{"  "}
             {credit.crew &&
               credit.crew.map((ppl, index) => {
