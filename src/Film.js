@@ -113,7 +113,7 @@ const Film = () => {
             </span>
             <br></br>...or{" "}
             <a
-              href="http://www.mikeavallone.com/"
+              href="https://www.mikeavallone.com/"
               style={{
                 textDecoration: "underline",
               }}
