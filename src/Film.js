@@ -18,7 +18,7 @@ const Film = () => {
   }, []);
 
   function rewrite(i) {
-    return <CountUp start="50" end={i} duration="3.5" />;
+    return <CountUp start="50" end={i} duration="2.5" />;
   }
 
   React.useEffect(() => {
@@ -47,7 +47,7 @@ const Film = () => {
 
   const numSty = {
     position: "absolute",
-    left: "-75px",
+    left: "-65px",
   };
 
   // const numSty = (w) => {
@@ -69,41 +69,39 @@ const Film = () => {
           </div>
 
           <p>
-            <span
-              id="headline"
-              style={{
-                whiteSpace: "nowrap",
-                fontSize: "30px",
-                overflow: "hidden",
-                position: "relative",
-              }}
-            >
-              <span id="dex" style={numSty}>
-                {review.results &&
-                  review.results.map((rev, index, arr) => {
-                    const rLen = arr.length - 1;
-                    if (index === rLen) {
-                      return rewrite(index + 1);
-                    } else {
-                      return [];
-                    }
-                  })}
+            <div className="expander">
+              <span
+                id="headline"
+                style={{
+                  whiteSpace: "nowrap",
+                  fontSize: "30px",
+                  overflow: "hidden",
+                  position: "relative",
+                }}
+              >
+                <span id="dex" style={numSty}>
+                  {review.results &&
+                    review.results.map((rev, index, arr) => {
+                      const rLen = arr.length - 1;
+                      if (index === rLen) {
+                        return rewrite(index + 1);
+                      } else {
+                        return [];
+                      }
+                    })}
+                </span>
+                <span href id="numberlessHeadline">
+                  <a
+                    href={"/OneFilm/" + getRandomInt(50000)}
+                    style={{ cursor: "text" }}
+                  >
+                    movie
+                  </a>{" "}
+                  reviews by mike{" "}
+                  <span style={{ opacity: "0.15" }}>avallone.com</span>
+                </span>
               </span>
-              <span href id="numberlessHeadline">
-                <a
-                  href={"/OneFilm/" + getRandomInt(50000)}
-                  style={{ cursor: "text" }}
-                >
-                  movie
-                </a>{" "}
-                reviews by mike{" "}
-                <span style={{ opacity: "0.15" }}>avallone.com</span>
-              </span>
-            </span>
-            <br></br>
-            {/* <span>reviews of all movies </span>
-          <br></br>
-          <span>reviews of great movies </span> */}
+            </div>
             <span
               id="moviesInfo"
               style={{
@@ -111,10 +109,20 @@ const Film = () => {
                 overflow: "hidden",
               }}
             >
-              click the links or search at the top for movies
+              click or search at the top for movies
             </span>
+            <br></br>...or{" "}
+            <a
+              href="http://www.mikeavallone.com/"
+              style={{
+                textDecoration: "underline",
+              }}
+            >
+              {" "}
+              back to Mike's home page
+            </a>
             <details className="socials">
-              <summary style={{ cursor: "pointer" }}>
+              <summary style={{ cursor: "pointer", visibility: "hidden" }}>
                 also music, podcast and socials
               </summary>
               {/* <div style={{ height: "5px" }}></div> */}
@@ -197,13 +205,13 @@ const Film = () => {
         >
           Built By Mike, 2021
         </a>
-        <a
+        {/* <a
           href="https://forms.gle/vy51wJ6DbNURjDSLA"
           style={{ margin: "2px", float: "right" }}
           className="navItem"
         >
           Report Bug
-        </a>
+        </a> */}
       </footer>
     </>
   );

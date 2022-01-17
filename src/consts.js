@@ -87,7 +87,7 @@ export const great_films = [
   503919,
   // 517104, Cold War (2017) poop
   440298, 530915, 549559, 556574, 791373, 591538, 949, 718032, 489412, 542178,
-  827, 21484,
+  827, 21484, 678,
 ];
 
 export const currentID = my_films[getRandomInt(29)];

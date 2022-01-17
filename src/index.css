@@ -18,6 +18,10 @@ code {
     monospace;
 }
 
+footer {
+  width: auto;
+}
+
 a:link,
 a:visited,
 a:hover,
@@ -126,6 +130,10 @@ nav ul li {
   color: #b96a9f;
 }
 
+#moviesInfo a:hover {
+  color: #b96a9f;
+}
+
 .aFilm {
   display: grid;
   grid-template-columns: 30.5% 2% 35% 2% 30.5%;
@@ -173,6 +181,7 @@ nav ul li {
 
 .aReview {
   grid-column: 3;
+  max-width: 100%;
 }
 
 .reviewHead {
@@ -308,6 +317,7 @@ nav ul li {
   body,
   nav {
     background-color: whitesmoke;
+    min-width: 100%;
   }
 
   /* .navItem {
@@ -317,17 +327,30 @@ nav ul li {
 
   .mobileSearch {
     display: grid;
-    grid-template-columns: 75% 5% 20%;
+    grid-template-columns: 70% 10% 20%;
   }
 
-  #searchThing {
+  #searchThing,
+  #searchThing:focus {
     grid-column: 1;
+    transition: unset;
   }
 
   #submitThing {
     grid-column: 3;
   }
 
+  #headline {
+    width: 100px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .expander {
+    padding: 0;
+    margin: 0;
+    min-width: 315px;
+  }
   .aFilm {
     display: grid;
     grid-template-columns: 7.5% 85% 7.5%;
