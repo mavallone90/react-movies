@@ -3,6 +3,7 @@ import Film from "./Film";
 import Films from "./Films";
 import Nav from "./Nav";
 import Upcoming from "./Upcoming";
+import New from "./New";
 import Current from "./Current";
 import OneFilm from "./OneFilm";
 // import OneReview from "./OneReview";
@@ -57,6 +58,7 @@ function App() {
             <Route path="/ReviewsPlus" exact component={ReviewsPlus} />
             <Route path="/Reviews" exact component={Reviews} />
             <Route path="/film/Upcoming" component={Upcoming} />
+            <Route path="/film/New" component={New} />
             <Route path="/Current" exact component={Current} />
             <Route path="/OneFilm/:currentID" exact component={OneFilm} />
             <Route path="*">

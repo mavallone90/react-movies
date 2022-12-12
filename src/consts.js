@@ -122,6 +122,25 @@ export var formateDate = function (timestamp) {
   return months[date.getMonth()] + ", " + date.getFullYear();
 };
 
+export var formateDateShort = function (timestamp) {
+  var date = new Date(timestamp);
+  var months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  return months[date.getMonth()] + " " + date.getFullYear();
+};
+
 export var justYear = function (timestamp) {
   var date = new Date(timestamp);
   return date.getFullYear();
