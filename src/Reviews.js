@@ -46,15 +46,15 @@ const Reviews = ({ run }) => {
     cursor: "pointer",
   };
 
-  const linkBtnLB = {
-    // border: "1px solid black",
-    padding: "0px 3px 0px 3px",
-    color: "white",
+  // const linkBtnLB = {
+  //   // border: "1px solid black",
+  //   padding: "0px 3px 0px 3px",
+  //   color: "white",
 
-    fontSize: 16,
-    cursor: "pointer",
-    opacity: "0.7",
-  };
+  //   fontSize: 16,
+  //   cursor: "pointer",
+  //   opacity: "0.7",
+  // };
 
   const ratingColor = (r) => {
     var x;
@@ -141,7 +141,7 @@ const Reviews = ({ run }) => {
                 >
                   Read Review
                 </a>
-                <a
+                {/* <a
                   href={rev["Letterboxd URI"]}
                   className="linkButton"
                   style={linkBtnLB}
@@ -149,7 +149,7 @@ const Reviews = ({ run }) => {
                   rel="noreferrer"
                 >
                   LB
-                </a>
+                </a> */}
               </span>
             </li>
           ))}

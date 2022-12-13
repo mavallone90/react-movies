@@ -37,13 +37,12 @@ const Nav = ({ run }) => {
       document.getElementById("n2").innerHTML = "Greats";
       // document.getElementById("n3").style.visibility = "hidden";
       // document.getElementById("n3").style.width = "0px";
-      document.getElementById("n4").style.visibility = "hidden";
-      document.getElementById("n4").style.width = "0px";
+      document.getElementById("n6").style.visibility = "hidden";
+      document.getElementById("n6").style.width = "0px";
       document.getElementById("searchThing").style.width = "90%";
       document.getElementById("submitThing").style.width = "100%";
       document.getElementById("searchThing").placeholder = "Film Title";
-      removeElement("n3");
-      // removeElement("n4");
+      // removeElement("n5");
       // document.getElementById("searc haThing").innerText = "Search";
     } else {
       console.log("desktop");
@@ -116,7 +115,7 @@ const Nav = ({ run }) => {
             Home
           </NavLink>
         </li>
-        <li id="n3">
+        {/* <li id="n3">
           <NavLink
             to="/Current"
             id="n3"
@@ -134,6 +133,16 @@ const Nav = ({ run }) => {
             activeStyle={onThisLink}
           >
             Upcoming Flicks
+          </NavLink>
+        </li> */}
+        <li id="n6">
+          <NavLink
+            to="/New"
+            id="n6"
+            className="navItem"
+            activeStyle={onThisLink}
+          >
+            Popular & New
           </NavLink>
         </li>
       </ul>
