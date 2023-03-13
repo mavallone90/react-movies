@@ -47,7 +47,7 @@ const Film = () => {
 
   const numSty = {
     position: "absolute",
-    left: "-65px",
+    left: "-72px",
   };
 
   // const numSty = (w) => {
